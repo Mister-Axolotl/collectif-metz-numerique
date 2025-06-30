@@ -1,0 +1,30 @@
+@use "../../../styles/variables" as *;
+
+.main-footer {
+    background: $secondary-color;
+    color: $white;
+    padding: 2rem 1rem 1.2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 -2px 8px rgba(74, 103, 65, 0.07);
+
+    .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-link {
+        color: $white;
+        text-decoration: underline;
+        transition: color 0.2s;
+        &:hover {
+            color: lighten($secondary-color, 20%);
+        }
+    }
+}

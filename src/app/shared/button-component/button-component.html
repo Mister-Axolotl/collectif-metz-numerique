@@ -1,0 +1,4 @@
+<button [attr.type]="type" [class.primary]="color === 'primary'" [class.secondary]="color === 'secondary'"
+    [disabled]="disabled" (click)="createRipple($event)">
+    <ng-content></ng-content>
+</button>

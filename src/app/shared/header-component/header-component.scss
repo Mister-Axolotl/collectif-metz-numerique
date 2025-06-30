@@ -1,0 +1,71 @@
+@use "../../../styles/variables" as *;
+
+.main-header {
+    background: $primary-color;
+    color: $white;
+    box-shadow: 0 2px 8px rgba(43, 58, 85, 0.07);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 1.3rem;
+
+        .logo-icon {
+            font-size: 1.7rem;
+            margin-right: 0.5rem;
+            color: $secondary-color;
+            filter: drop-shadow(0 1px 2px rgba(74, 103, 65, 0.13));
+        }
+
+        .logo-text {
+            letter-spacing: 0.02em;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+
+        .nav-link {
+            color: $white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            transition: color 0.2s;
+
+            &::after {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 0;
+                background: $secondary-color;
+                transition: width 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+            }
+
+            &:hover,
+            &:focus {
+                color: $secondary-color;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
