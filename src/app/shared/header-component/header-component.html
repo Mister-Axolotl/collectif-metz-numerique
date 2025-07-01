@@ -1,14 +1,38 @@
-<header class="main-header">
+<header role="banner">
     <div class="container">
-        <div class="logo">
-            <span class="logo-icon">🌐</span>
-            <span class="logo-text">Collectif Metz Numérique</span>
+        <!-- Section principale avec logo, titre et contact -->
+        <div class="header-top">
+            <div class="logo-title-section">
+                <a routerLink="/" aria-label="Accueil - Collectif Metz Numérique">
+                    <div class="logo">
+                        <img src="images/logo_high.png" alt="Logo Collectif Metz Numérique" class="site-logo">
+                    </div>
+                    <h1>Collectif Metz Numérique</h1>
+                </a>
+            </div>
+            <div class="header-actions">
+                <a routerLink="/contact" routerLinkActive="active" class="contact-btn">
+                    <mat-icon class="profile-icon">mail</mat-icon>
+                    <span>Contact</span>
+                </a>
+                <a routerLink="/profile" routerLinkActive="active" class="profile-btn">
+                    <mat-icon class="profile-icon">account_circle</mat-icon>
+                    <span>Profil</span>
+                </a>
+            </div>
         </div>
-        <nav class="nav-links">
-            <a href="#" class="nav-link">Accueil</a>
-            <a href="#about" class="nav-link">À propos</a>
-            <a href="#events" class="nav-link">Événements</a>
-            <a href="#contact" class="nav-link">Contact</a>
+
+        <!-- Barre de navigation en grenat -->
+        <nav role="navigation" aria-label="Navigation principale" class="main-nav">
+            <ul>
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+                </li>
+                <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                <li><a routerLink="/evenements" routerLinkActive="active">Événements</a></li>
+                <li><a routerLink="/adhesion" routerLinkActive="active">Adhésion</a></li>
+                <li><a routerLink="/actualites" routerLinkActive="active">Actualités</a></li>
+                <li><a routerLink="/partenaires" routerLinkActive="active">Partenaires</a></li>
+            </ul>
         </nav>
     </div>
 </header>

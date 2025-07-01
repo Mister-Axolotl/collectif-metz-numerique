@@ -1,1 +1,6 @@
-@use "../../../styles/variables" as *;
+@use "variables" as *;
+
+footer {
+    height: $footer-height;
+    background-color: $secondary-color;
+}

@@ -1,6 +1,53 @@
-$primary-color: #2b3a55;
-$secondary-color: #4a6741;
-$white: #fff;
+// CSS Custom Properties (can be changed dynamically)
+:root {
+    --primary-color: #5e9d81;
+    --secondary-color: #457b9d;
+    --tertiary-color: #722f37;
+    --accent-color: #a8dadc;
+    --background-color: #f1faee;
+    --text-color: #202427;
+    --alert-color: #e63946;
+    --success-color: #2a9d8f;
+    --warning-color: #ffb703;
+    --info-color: #0077b6;
+    --white: #ffffff;
+    --black: #0d0d0d;
+
+    // Dynamic text colors for buttons (will be calculated)
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #ffffff;
+    --accent-text-color: #202427;
+    --alert-text-color: #ffffff;
+}
+
+// SCSS Variables using CSS custom properties
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$tertiary-color: var(--tertiary-color);
+$accent-color: var(--accent-color);
+$background-color: var(--background-color);
+$text-color: var(--text-color);
+$alert-color: var(--alert-color);
+$success-color: var(--success-color);
+$warning-color: var(--warning-color);
+$info-color: var(--info-color);
+$white: var(--white);
+$black: var(--black);
+
+// Dynamic text colors
+$primary-text-color: var(--primary-text-color);
+$secondary-text-color: var(--secondary-text-color);
+$accent-text-color: var(--accent-text-color);
+$alert-text-color: var(--alert-text-color);
+
+// Sizes
+$header-height: 252px;
+$footer-height: 60px;
+
+// Font
+$title-font: "Poppins", sans-serif;
+$font-family: "Open Sans", sans-serif;
+
+// Misc
 $border-radius: 0.5rem;
-$font-family: "Segoe UI", Arial, sans-serif;
-$transition: 0.2s all;
+$transition: 0.3s all;

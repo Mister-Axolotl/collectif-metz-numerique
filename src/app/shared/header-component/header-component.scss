@@ -1,71 +1,197 @@
-@use "../../../styles/variables" as *;
+@use "variables" as *;
 
-.main-header {
-    background: $primary-color;
-    color: $white;
-    box-shadow: 0 2px 8px rgba(43, 58, 85, 0.07);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+header {
+    position: relative;
+    background: linear-gradient(to right, rgba(5, 255, 142, 0.2), rgba(0, 157, 255, 0.2));
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("../../../../public/images/header-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.7;
+        z-index: -1;
+    }
 
     .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.1rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
+        padding: 1rem;
+        position: relative;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .logo-title-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .logo {
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
 
-        .logo-icon {
-            font-size: 1.7rem;
-            margin-right: 0.5rem;
-            color: $secondary-color;
-            filter: drop-shadow(0 1px 2px rgba(74, 103, 65, 0.13));
-        }
-
-        .logo-text {
-            letter-spacing: 0.02em;
+        .site-logo {
+            max-height: 120px;
+            width: auto;
         }
     }
 
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-
-        .nav-link {
-            color: $white;
+    a {
+        margin: 0;
+        h1 {
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.05rem;
-            position: relative;
-            transition: color 0.2s;
+            color: $text-color;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
 
-            &::after {
-                content: "";
-                display: block;
-                height: 2px;
-                width: 0;
-                background: $secondary-color;
-                transition: width 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-                position: absolute;
-                left: 0;
-                bottom: -4px;
+    .header-actions {
+        position: absolute;
+        right: 1rem;
+        display: flex;
+        gap: 0.75rem;
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+
+            color: white;
+            background-color: $primary-color;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 10px 15px;
+            border: 2px solid $primary-color;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(47, 114, 76, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            &:hover {
+                background-color: transparent;
+                color: $primary-color;
+                box-shadow: 0 4px 12px rgba(47, 114, 78, 0.4);
+                transform: translateY(-2px);
             }
 
-            &:hover,
-            &:focus {
-                color: $secondary-color;
-                &::after {
-                    width: 100%;
+            &.active {
+                background-color: transparent;
+                color: $primary-color;
+                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primary-color;
+            gap: 0.4rem;
+            color: $white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            border: 2px solid $primary-color;
+
+            &:hover {
+                background-color: transparent;
+                color: $white;
+                transform: translateY(-2px);
+            }
+
+            &.active {
+                background-color: $primary-color;
+                color: $white;
+            }
+        }
+
+        .profile-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            background-color: transparent;
+            color: $white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            border: 2px solid $primary-color;
+
+            &:hover {
+                background-color: $primary-color;
+                color: $white;
+                transform: translateY(-2px);
+            }
+
+            &.active {
+                background-color: $primary-color;
+                color: $white;
+            }
+        }
+    }
+
+    .main-nav {
+        background-color: $tertiary-color;
+        border-radius: 4px;
+        padding: 0.5rem 0;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        li {
+            a {
+                color: $white;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+
+                &:hover,
+                &.active {
+                    background-color: rgba(255, 255, 255, 0.2);
                 }
             }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    header {
+        .header-top {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .header-actions {
+            position: static;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .main-nav ul {
+            flex-wrap: wrap;
+            gap: 1rem;
         }
     }
 }

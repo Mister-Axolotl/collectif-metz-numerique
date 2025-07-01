@@ -1,0 +1,464 @@
+<main>
+    <div class="test-container">
+        <header class="test-header">
+            <h1>🧪 Page de Test - Composants</h1>
+            <p>Cette page présente tous les composants et styles de l'application avec Material Design</p>
+            <p><em>(Changez les couleurs en temps réel pour voir l'effet sur toute l'application)</em></p>
+        </header>
+
+        <!-- Live Color Picker Section -->
+        <mat-card class="test-section">
+            <mat-card-header>
+                <mat-card-title>🎨 Éditeur de Couleurs en Temps Réel</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="color-editor">
+                    <div class="color-picker-grid">
+                        <div class="color-picker-item">
+                            <label for="primary-color">Primary Color</label>
+                            <input type="color" id="primary-color" [value]="currentColors.primary"
+                                (input)="onColorChange('primary', $event)">
+                            <span class="color-value">{{ currentColors.primary }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="secondary-color">Secondary Color</label>
+                            <input type="color" id="secondary-color" [value]="currentColors.secondary"
+                                (input)="onColorChange('secondary', $event)">
+                            <span class="color-value">{{ currentColors.secondary }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="tertiary-color">Tertiary Color</label>
+                            <input type="color" id="tertiary-color" [value]="currentColors.tertiary"
+                                (input)="onColorChange('tertiary', $event)">
+                            <span class="color-value">{{ currentColors.tertiary }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="accent-color">Accent Color</label>
+                            <input type="color" id="accent-color" [value]="currentColors.accent"
+                                (input)="onColorChange('accent', $event)">
+                            <span class="color-value">{{ currentColors.accent }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="alert-color">Alert Color</label>
+                            <input type="color" id="alert-color" [value]="currentColors.alert"
+                                (input)="onColorChange('alert', $event)">
+                            <span class="color-value">{{ currentColors.alert }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="background-color">Background Color</label>
+                            <input type="color" id="background-color" [value]="currentColors.background"
+                                (input)="onColorChange('background', $event)">
+                            <span class="color-value">{{ currentColors.background }}</span>
+                        </div>
+
+                        <div class="color-picker-item">
+                            <label for="text-color">Text Color</label>
+                            <input type="color" id="text-color" [value]="currentColors.text"
+                                (input)="onColorChange('text', $event)">
+                            <span class="color-value">{{ currentColors.text }}</span>
+                        </div>
+                    </div>
+
+                    <div class="color-actions">
+                        <button mat-raised-button color="primary" (click)="resetColors()">
+                            <mat-icon>refresh</mat-icon>
+                            Réinitialiser les couleurs
+                        </button>
+                        <button mat-raised-button color="accent" (click)="saveColorScheme()">
+                            <mat-icon>save</mat-icon>
+                            Sauvegarder le thème
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="test-section">
+            <mat-card-header>
+                <mat-card-title>🎨 Aperçu des Couleurs</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="colors-showcase">
+                    <div class="color-card primary">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Primary</h4>
+                            <code>{{ currentColors.primary }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card secondary">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Secondary</h4>
+                            <code>{{ currentColors.secondary }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card tertiary">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Tertiary</h4>
+                            <code>{{ currentColors.tertiary }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card accent">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Accent</h4>
+                            <code>{{ currentColors.accent }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card background">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Background</h4>
+                            <code>{{ currentColors.background }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card alert">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Alert</h4>
+                            <code>{{ currentColors.alert }}</code>
+                        </div>
+                    </div>
+                    <div class="color-card text">
+                        <div class="color-swatch"></div>
+                        <div class="color-info">
+                            <h4>Text</h4>
+                            <code>{{ currentColors.text }}</code>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="test-section">
+            <mat-card-header>
+                <mat-card-title>🔘 Test des Boutons (Changent automatiquement)</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="buttons-showcase">
+                    <!-- Primary Buttons -->
+                    <section>
+                        <div class="example-label">🎯 Boutons Primary</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Text" color="primary"></app-button-component>
+                            <app-button-component type="elevated" text="Elevated"
+                                color="primary"></app-button-component>
+                            <app-button-component type="filled" text="Filled" color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Outlined"
+                                color="primary"></app-button-component>
+                            <app-button-component type="tonal" text="Tonal" color="primary"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Save" icon="save"
+                                color="primary"></app-button-component>
+                            <app-button-component type="filled" text="Download" icon="download"
+                                color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Upload" icon="upload"
+                                color="primary"></app-button-component>
+                            <app-button-component type="icon" icon="favorite" ariaLabel="Favorite"
+                                color="primary"></app-button-component>
+                            <app-button-component type="fab" icon="add" ariaLabel="Add"
+                                color="primary"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Secondary Buttons -->
+                    <section>
+                        <div class="example-label">🔷 Boutons Secondary</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Text" color="secondary"></app-button-component>
+                            <app-button-component type="elevated" text="Elevated"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="filled" text="Filled" color="secondary"></app-button-component>
+                            <app-button-component type="outlined" text="Outlined"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="tonal" text="Tonal" color="secondary"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Edit" icon="edit"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="filled" text="Share" icon="share"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="outlined" text="Print" icon="print"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="icon" icon="settings" ariaLabel="Settings"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="mini-fab" icon="edit" ariaLabel="Edit"
+                                color="secondary"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Tertiary Buttons -->
+                    <section>
+                        <div class="example-label">🔺 Boutons Tertiary</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Text" color="tertiary"></app-button-component>
+                            <app-button-component type="elevated" text="Elevated"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="filled" text="Filled" color="tertiary"></app-button-component>
+                            <app-button-component type="outlined" text="Outlined"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="tonal" text="Tonal" color="tertiary"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Archive" icon="archive"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="filled" text="Backup" icon="backup"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="outlined" text="History" icon="history"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="icon" icon="bookmark" ariaLabel="Bookmark"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="extended-fab" text="Create" icon="create"
+                                color="tertiary"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Accent Buttons -->
+                    <section>
+                        <div class="example-label">✨ Boutons Accent</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Text" color="accent"></app-button-component>
+                            <app-button-component type="elevated" text="Elevated" color="accent"></app-button-component>
+                            <app-button-component type="filled" text="Filled" color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Outlined" color="accent"></app-button-component>
+                            <app-button-component type="tonal" text="Tonal" color="accent"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Like" icon="thumb_up"
+                                color="accent"></app-button-component>
+                            <app-button-component type="filled" text="Star" icon="star"
+                                color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Send" icon="send"
+                                color="accent"></app-button-component>
+                            <app-button-component type="icon" icon="notifications" ariaLabel="Notifications"
+                                color="accent"></app-button-component>
+                            <app-button-component type="fab" icon="favorite" ariaLabel="Favorite"
+                                color="accent"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Warning Buttons -->
+                    <section>
+                        <div class="example-label">⚠️ Boutons Warning</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Text" color="warn"></app-button-component>
+                            <app-button-component type="elevated" text="Elevated" color="warn"></app-button-component>
+                            <app-button-component type="filled" text="Filled" color="warn"></app-button-component>
+                            <app-button-component type="outlined" text="Outlined" color="warn"></app-button-component>
+                            <app-button-component type="tonal" text="Tonal" color="warn"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Delete" icon="delete"
+                                color="warn"></app-button-component>
+                            <app-button-component type="filled" text="Warning" icon="warning"
+                                color="warn"></app-button-component>
+                            <app-button-component type="outlined" text="Remove" icon="remove_circle"
+                                color="warn"></app-button-component>
+                            <app-button-component type="icon" icon="error" ariaLabel="Error"
+                                color="warn"></app-button-component>
+                            <app-button-component type="mini-fab" icon="close" ariaLabel="Close"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Icon Only Buttons -->
+                    <section>
+                        <div class="example-label">🎨 Boutons Icon Uniquement</div>
+                        <div class="example-button-row">
+                            <app-button-component type="icon" icon="home" ariaLabel="Home"
+                                color="primary"></app-button-component>
+                            <app-button-component type="icon" icon="search" ariaLabel="Search"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="icon" icon="menu" ariaLabel="Menu"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="icon" icon="more_vert" ariaLabel="More"
+                                color="accent"></app-button-component>
+                            <app-button-component type="icon" icon="account_circle" ariaLabel="Account"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- FAB Buttons -->
+                    <section>
+                        <div class="example-label">🚀 Boutons FAB (Floating Action Button)</div>
+                        <div class="example-button-row">
+                            <app-button-component type="fab" icon="add" ariaLabel="Add"
+                                color="primary"></app-button-component>
+                            <app-button-component type="mini-fab" icon="edit" ariaLabel="Edit"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="extended-fab" text="Compose" icon="edit"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="extended-fab" text="Create New" icon="add_circle"
+                                color="accent"></app-button-component>
+                            <app-button-component type="fab" icon="chat" ariaLabel="Chat"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Business Action Buttons -->
+                    <section>
+                        <div class="example-label">💼 Boutons Actions Business</div>
+                        <div class="example-button-row">
+                            <app-button-component type="filled" text="Save Document" icon="save"
+                                color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Export PDF" icon="picture_as_pdf"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="filled" text="Send Email" icon="email"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="tonal" text="Schedule" icon="schedule"
+                                color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Cancel" icon="cancel"
+                                color="warn"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="View Details" icon="visibility"
+                                color="primary"></app-button-component>
+                            <app-button-component type="filled" text="Download Report" icon="assessment"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="outlined" text="Sync Data" icon="sync"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="tonal" text="Refresh" icon="refresh"
+                                color="accent"></app-button-component>
+                            <app-button-component type="filled" text="Delete All" icon="delete_forever"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Social Media Buttons -->
+                    <section>
+                        <div class="example-label">📱 Boutons Réseaux Sociaux</div>
+                        <div class="example-button-row">
+                            <app-button-component type="filled" text="Share" icon="share"
+                                color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Like" icon="thumb_up"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="tonal" text="Comment" icon="comment"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="filled" text="Follow" icon="person_add"
+                                color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Report" icon="flag"
+                                color="warn"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="icon" icon="facebook" ariaLabel="Facebook"
+                                color="primary"></app-button-component>
+                            <app-button-component type="icon" icon="twitter" ariaLabel="Twitter"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="icon" icon="instagram" ariaLabel="Instagram"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="icon" icon="linkedin" ariaLabel="LinkedIn"
+                                color="accent"></app-button-component>
+                            <app-button-component type="icon" icon="youtube" ariaLabel="YouTube"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- File Management Buttons -->
+                    <section>
+                        <div class="example-label">📁 Boutons Gestion de Fichiers</div>
+                        <div class="example-button-row">
+                            <app-button-component type="filled" text="Open File" icon="folder_open"
+                                color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Create Folder" icon="create_new_folder"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="tonal" text="Upload" icon="cloud_upload"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="filled" text="Download" icon="cloud_download"
+                                color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Delete" icon="delete_outline"
+                                color="warn"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Copy" icon="file_copy"
+                                color="primary"></app-button-component>
+                            <app-button-component type="text" text="Move" icon="drive_file_move"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="text" text="Rename" icon="drive_file_rename_outline"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="text" text="Properties" icon="info"
+                                color="accent"></app-button-component>
+                            <app-button-component type="text" text="Compress" icon="compress"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Navigation Buttons -->
+                    <section>
+                        <div class="example-label">🧭 Boutons Navigation</div>
+                        <div class="example-button-row">
+                            <app-button-component type="filled" text="Home" icon="home"
+                                color="primary"></app-button-component>
+                            <app-button-component type="outlined" text="Back" icon="arrow_back"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="tonal" text="Forward" icon="arrow_forward"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="filled" text="Up" icon="arrow_upward"
+                                color="accent"></app-button-component>
+                            <app-button-component type="outlined" text="Exit" icon="exit_to_app"
+                                color="warn"></app-button-component>
+                        </div>
+                        <div class="example-button-row">
+                            <app-button-component type="icon" icon="first_page" ariaLabel="First Page"
+                                color="primary"></app-button-component>
+                            <app-button-component type="icon" icon="chevron_left" ariaLabel="Previous"
+                                color="secondary"></app-button-component>
+                            <app-button-component type="icon" icon="chevron_right" ariaLabel="Next"
+                                color="tertiary"></app-button-component>
+                            <app-button-component type="icon" icon="last_page" ariaLabel="Last Page"
+                                color="accent"></app-button-component>
+                            <app-button-component type="icon" icon="close" ariaLabel="Close"
+                                color="warn"></app-button-component>
+                        </div>
+                    </section>
+
+                    <mat-divider></mat-divider>
+
+                    <!-- Disabled Buttons -->
+                    <section>
+                        <div class="example-label">🚫 Boutons Désactivés</div>
+                        <div class="example-button-row">
+                            <app-button-component type="text" text="Disabled Text" color="primary"
+                                [disabled]="true"></app-button-component>
+                            <app-button-component type="filled" text="Disabled Filled" color="secondary"
+                                [disabled]="true"></app-button-component>
+                            <app-button-component type="outlined" text="Disabled Outlined" color="tertiary"
+                                [disabled]="true"></app-button-component>
+                            <app-button-component type="tonal" text="Disabled Tonal" color="accent"
+                                [disabled]="true"></app-button-component>
+                            <app-button-component type="icon" icon="block" ariaLabel="Disabled" color="warn"
+                                [disabled]="true"></app-button-component>
+                        </div>
+                    </section>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</main>

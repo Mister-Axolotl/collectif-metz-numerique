@@ -1,4 +1,118 @@
-<button [attr.type]="type" [class.primary]="color === 'primary'" [class.secondary]="color === 'secondary'"
-    [disabled]="disabled" (click)="createRipple($event)">
-    <ng-content></ng-content>
-</button>
+<ng-container [ngSwitch]="type">
+    <!-- Text Button -->
+    <button *ngSwitchCase="'text'" matButton [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Elevated Button -->
+    <button *ngSwitchCase="'elevated'" matButton="elevated" [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Outlined Button -->
+    <button *ngSwitchCase="'outlined'" matButton="outlined" [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Filled Button -->
+    <button *ngSwitchCase="'filled'" matButton="filled" [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Tonal Button -->
+    <button *ngSwitchCase="'tonal'" matButton="tonal" [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Icon Button -->
+    <button *ngSwitchCase="'icon'" matIconButton [ngClass]="getButtonClasses()" [disabled]="disabled"
+        [attr.aria-label]="ariaLabel">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+    </button>
+
+    <!-- FAB Button -->
+    <button *ngSwitchCase="'fab'" matFab [ngClass]="getButtonClasses()" [disabled]="disabled"
+        [attr.aria-label]="ariaLabel">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+    </button>
+
+    <!-- Mini FAB Button -->
+    <button *ngSwitchCase="'mini-fab'" matMiniFab [ngClass]="getButtonClasses()" [disabled]="disabled"
+        [attr.aria-label]="ariaLabel">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+    </button>
+
+    <!-- Extended FAB Button -->
+    <button *ngSwitchCase="'extended-fab'" matFab extended [ngClass]="getButtonClasses()" [disabled]="disabled">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </button>
+
+    <!-- Link variants -->
+    <a *ngSwitchCase="'text-link'" matButton [ngClass]="getButtonClasses()" [href]="href" [target]="target">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+
+    <a *ngSwitchCase="'elevated-link'" matButton="elevated" [ngClass]="getButtonClasses()" [href]="href"
+        [target]="target">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+
+    <a *ngSwitchCase="'outlined-link'" matButton="outlined" [ngClass]="getButtonClasses()" [href]="href"
+        [target]="target">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+
+    <a *ngSwitchCase="'filled-link'" matButton="filled" [ngClass]="getButtonClasses()" [href]="href" [target]="target">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+
+    <a *ngSwitchCase="'tonal-link'" matButton="tonal" [ngClass]="getButtonClasses()" [href]="href" [target]="target">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+
+    <a *ngSwitchCase="'extended-fab-link'" matFab extended [ngClass]="getButtonClasses()" [routerLink]="routerLink">
+        @if (icon) {
+        <mat-icon>{{ icon }}</mat-icon>
+        }
+        {{ text }}
+    </a>
+</ng-container>

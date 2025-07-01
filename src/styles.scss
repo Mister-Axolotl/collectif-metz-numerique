@@ -1,9 +1,39 @@
 @use "styles/variables" as *;
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
 body {
     font-family: $font-family;
-    background: $primary-color;
     color: $white;
+}
+
+main {
+    background: $background-color;
+    color: $text-color;
+    min-height: calc(100vh - $header-height - $footer-height);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $title-font;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
     margin: 0;
-    min-height: 100vh;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
