@@ -33,14 +33,20 @@ html,
 body {
     height: 100%;
 }
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-icon {
+    overflow: visible !important;
+}
+
 .error-page {
     overflow-x: hidden;
 }
+
 
 // Animation pour les transitions de page
 .page-transition {
@@ -52,6 +58,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

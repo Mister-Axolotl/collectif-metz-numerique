@@ -1,0 +1,81 @@
+:root {
+  --primary-color: #5e9d81;
+  --secondary-color: #457b9d;
+  --tertiary-color: #722f37;
+  --accent-color: #a8dadc;
+  --background-color: #f8f9fa;
+  --text-color: #202427;
+  --alert-color: #e63946;
+  --success-color: #2a9d8f;
+  --warning-color: #ffb703;
+  --info-color: #0077b6;
+  --white: #ffffff;
+  --grey: #6c757d;
+  --black: #0d0d0d;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #ffffff;
+  --accent-text-color: #202427;
+  --alert-text-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--white);
+}
+
+main {
+  background: var(--background-color);
+  color: var(--text-color);
+  min-height: calc(100vh - 252px - 60px);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-icon {
+  overflow: visible !important;
+}
+
+.error-page {
+  overflow-x: hidden;
+}
+
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=styles.css.map */
