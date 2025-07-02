@@ -1,6 +1,5 @@
 <header role="banner">
     <div class="container">
-        <!-- Section principale avec logo, titre et contact -->
         <div class="header-top">
             <div class="logo-title-section">
                 <a routerLink="/" aria-label="Accueil - Collectif Metz Numérique">
@@ -21,9 +20,11 @@
                 </a>
             </div>
         </div>
+    </div>
 
-        <!-- Barre de navigation en grenat -->
-        <nav role="navigation" aria-label="Navigation principale" class="main-nav">
+    <!-- Barre de navigation sticky -->
+    <nav role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky">
+        <div class="nav-container">
             <ul>
                 <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
                 </li>
@@ -33,6 +34,6 @@
                 <li><a routerLink="/actualites" routerLinkActive="active">Actualités</a></li>
                 <li><a routerLink="/partenaires" routerLinkActive="active">Partenaires</a></li>
             </ul>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </header>

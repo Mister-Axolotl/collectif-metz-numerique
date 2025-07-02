@@ -48,6 +48,7 @@ header {
 
     a {
         margin: 0;
+
         h1 {
             text-decoration: none;
             color: $text-color;
@@ -65,8 +66,7 @@ header {
         a {
             display: inline-block;
             text-decoration: none;
-
-            color: white;
+            color: $white;
             background-color: $primary-color;
             font-weight: 600;
             font-size: 0.95rem;
@@ -137,35 +137,78 @@ header {
             }
         }
     }
+}
 
-    .main-nav {
+// Navigation sticky
+.main-nav {
+    background-color: $tertiary-color;
+    padding: 0.5rem 0;
+    position: relative;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
         background-color: $tertiary-color;
+        opacity: 0.97;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        animation: slideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+.nav-container {
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+li {
+    a {
+        color: $white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
         border-radius: 4px;
-        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+        position: relative;
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        &:hover,
+        &.active {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
-        li {
-            a {
-                color: $white;
-                text-decoration: none;
-                padding: 0.5rem 1rem;
-                border-radius: 4px;
-                transition: background-color 0.3s ease;
-
-                &:hover,
-                &.active {
-                    background-color: rgba(255, 255, 255, 0.2);
-                }
-            }
+        // Effet de survol amélioré
+        &:hover {
+            transform: translateY(-2px);
         }
+    }
+}
+
+// Animation keyframes
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -187,10 +230,29 @@ header {
                 font-size: 0.9rem;
             }
         }
+    }
 
-        .main-nav ul {
+    .main-nav {
+        &.sticky {
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+        }
+
+        ul {
             flex-wrap: wrap;
             gap: 1rem;
+            justify-content: center;
+        }
+
+        li a {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
         }
     }
+}
+
+// Pour éviter le "saut" du contenu quand la nav devient sticky
+body.nav-sticky {
+    padding-top: 60px; // Ajuste selon la hauteur de ta nav
 }

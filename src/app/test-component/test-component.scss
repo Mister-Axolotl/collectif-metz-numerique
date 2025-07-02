@@ -157,21 +157,27 @@
         &.primary .color-swatch {
             background-color: $primary-color;
         }
+
         &.secondary .color-swatch {
             background-color: $secondary-color;
         }
+
         &.tertiary .color-swatch {
             background-color: $tertiary-color;
         }
+
         &.accent .color-swatch {
             background-color: $accent-color;
         }
+
         &.background .color-swatch {
             background-color: $background-color;
         }
+
         &.alert .color-swatch {
             background-color: $alert-color;
         }
+
         &.text .color-swatch {
             background-color: $text-color;
         }
