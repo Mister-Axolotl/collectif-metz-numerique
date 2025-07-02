@@ -1,0 +1,650 @@
+<div class="legal-info-container">
+    <div class="container">
+        <header class="page-header">
+            <h1>Informations légales pour les associations</h1>
+            <p class="subtitle">Guide complet des procédures et réglementations</p>
+        </header>
+
+        <div class="tabs-container">
+            <nav class="tabs-nav">
+                <button class="tab-button" [class.active]="activeTab === 'reunions'" (click)="setActiveTab('reunions')">
+                    <i class="material-icons">groups</i>
+                    Types de réunions
+                </button>
+                <button class="tab-button" [class.active]="activeTab === 'statuts'" (click)="setActiveTab('statuts')">
+                    <i class="material-icons">description</i>
+                    Statuts
+                </button>
+                <button class="tab-button" [class.active]="activeTab === 'comptabilite'"
+                    (click)="setActiveTab('comptabilite')">
+                    <i class="material-icons">account_balance</i>
+                    Comptabilité
+                </button>
+                <button class="tab-button" [class.active]="activeTab === 'juridique'"
+                    (click)="setActiveTab('juridique')">
+                    <i class="material-icons">gavel</i>
+                    Aspects juridiques
+                </button>
+            </nav>
+
+            <div class="tab-content">
+                <!-- Onglet Types de réunions -->
+                <div class="tab-panel" [class.active]="activeTab === 'reunions'">
+                    <h2>Types principaux de réunions</h2>
+
+                    <div class="meeting-cards">
+                        <div class="meeting-card">
+                            <div class="card-header">
+                                <h3>Assemblée constitutive</h3>
+                                <span class="badge founding">Création</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>But :</strong> Créer l'association, adopter les statuts, élire la première
+                                    direction.</p>
+                                <p><strong>Participants :</strong> Membres fondateurs uniquement.</p>
+                            </div>
+                        </div>
+
+                        <div class="meeting-card">
+                            <div class="card-header">
+                                <h3>Assemblée générale ordinaire (AGO)</h3>
+                                <span class="badge ordinary">Annuelle</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>But :</strong> Examiner la gestion courante, approuver les comptes, élire les
+                                    membres du conseil d'administration.</p>
+                                <p><strong>Participants :</strong> Tous les membres à jour de cotisation.</p>
+                            </div>
+                        </div>
+
+                        <div class="meeting-card">
+                            <div class="card-header">
+                                <h3>Assemblée générale extraordinaire (AGE)</h3>
+                                <span class="badge extraordinary">Exceptionnelle</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>But :</strong> Décisions importantes (modification des statuts, dissolution,
+                                    fusion).</p>
+                                <p><strong>Participants :</strong> Tous les membres à jour de cotisation.</p>
+                            </div>
+                        </div>
+
+                        <div class="meeting-card">
+                            <div class="card-header">
+                                <h3>Conseil d'administration (CA)</h3>
+                                <span class="badge management">Gestion</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>But :</strong> Gérer au quotidien l'association, prendre des décisions entre
+                                    AG.</p>
+                                <p><strong>Participants :</strong> Membres élus au CA (souvent un nombre restreint).</p>
+                            </div>
+                        </div>
+
+                        <div class="meeting-card">
+                            <div class="card-header">
+                                <h3>Réunions du bureau</h3>
+                                <span class="badge operational">Opérationnel</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>But :</strong> Gestion opérationnelle et exécution des décisions du CA.</p>
+                                <p><strong>Participants :</strong> Président, trésorier, secrétaire, et autres membres
+                                    du bureau.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="material-icons">info</i> Points importants</h4>
+                        <ul>
+                            <li>Chaque réunion a des règles spécifiques sur la convocation, quorum et majorité</li>
+                            <li>Les membres votent généralement en AG (ordinaire ou extraordinaire)</li>
+                            <li>Le CA et le bureau prennent des décisions internes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Onglet Statuts -->
+                <div class="tab-panel" [class.active]="activeTab === 'statuts'">
+                    <h2>Statuts d'association</h2>
+
+                    <div class="intro-section">
+                        <div class="definition-card">
+                            <h3><i class="material-icons">description</i> Qu'est-ce que les statuts ?</h3>
+                            <p>Les statuts sont le <strong>document fondamental</strong> qui organise l'association. Ils
+                                constituent un pacte entre les membres fondateurs et s'imposent à tous les adhérents.
+                                C'est la <em>"constitution"</em> de votre association.</p>
+                        </div>
+                    </div>
+
+                    <div class="statuts-cards">
+                        <div class="statuts-card">
+                            <div class="card-header">
+                                <h3>Rôle des statuts</h3>
+                                <span class="badge fundamental">Fondamental</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Organisation :</strong> Définit la structure de l'association.</p>
+                                <p><strong>Fonctionnement :</strong> Établit les règles de gestion quotidienne.</p>
+                                <p><strong>Adhésion :</strong> Précise les modalités d'adhésion et de radiation.</p>
+                                <p><strong>Direction :</strong> Détermine les organes de direction et leurs pouvoirs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="statuts-card">
+                            <div class="card-header">
+                                <h3>Exigences légales</h3>
+                                <span class="badge legal">Légal</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Clarté :</strong> Rédaction claire et compréhensible.</p>
+                                <p><strong>Conformité :</strong> Compatible avec la législation en vigueur.</p>
+                                <p><strong>Dépôt :</strong> Souvent déposés en préfecture lors de la déclaration.</p>
+                                <p><strong>Opposabilité :</strong> S'imposent à tous les membres.</p>
+                            </div>
+                        </div>
+
+                        <div class="statuts-card">
+                            <div class="card-header">
+                                <h3>Assemblées générales</h3>
+                                <span class="badge procedures">Procédures</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Convocation :</strong> Modalités de convocation des AG.</p>
+                                <p><strong>Tenue :</strong> Règles de déroulement des assemblées.</p>
+                                <p><strong>Vote :</strong> Conditions de majorité et quorum.</p>
+                                <p><strong>Pouvoirs :</strong> Compétences et attributions des AG.</p>
+                            </div>
+                        </div>
+
+                        <div class="statuts-card">
+                            <div class="card-header">
+                                <h3>Modifications</h3>
+                                <span class="badge modification">AGE requise</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Procédure :</strong> Vote en Assemblée Générale Extraordinaire.</p>
+                                <p><strong>Majorité :</strong> Conditions spécifiques selon les statuts.</p>
+                                <p><strong>Formalités :</strong> Déclaration des modifications en préfecture.</p>
+                                <p><strong>Publicité :</strong> Information aux membres et tiers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mandatory-content">
+                        <h3>Contenu obligatoire des statuts</h3>
+
+                        <div class="mandatory-grid">
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">badge</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Nom de l'association</h4>
+                                    <p>Dénomination officielle unique et distinctive</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">flag</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Objet social</h4>
+                                    <p>But et activités principales de l'association</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">location_on</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Siège social</h4>
+                                    <p>Adresse officielle du siège de l'association</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">group_add</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Conditions d'adhésion</h4>
+                                    <p>Modalités d'admission et de radiation des membres</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">event</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Assemblées générales</h4>
+                                    <p>Modalités de convocation et de tenue des AG</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">supervisor_account</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Organes de direction</h4>
+                                    <p>Composition et pouvoirs des instances dirigeantes</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">how_to_vote</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Règles de vote</h4>
+                                    <p>Conditions de majorité, quorum et modalités</p>
+                                </div>
+                            </div>
+
+                            <div class="mandatory-item">
+                                <div class="item-icon">
+                                    <i class="material-icons">gavel</i>
+                                </div>
+                                <div class="item-content">
+                                    <h4>Droits et devoirs</h4>
+                                    <p>Obligations et prérogatives des membres</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="best-practices">
+                        <h3>Bonnes pratiques</h3>
+                        <div class="practices-grid">
+                            <div class="practice-card tip">
+                                <h4><i class="material-icons">tips_and_updates</i> Conseil de rédaction</h4>
+                                <ul>
+                                    <li>Utiliser un langage simple et précis</li>
+                                    <li>Éviter les contradictions internes</li>
+                                    <li>Prévoir les cas de conflits</li>
+                                    <li>S'inspirer de modèles existants</li>
+                                </ul>
+                            </div>
+
+                            <div class="practice-card warning">
+                                <h4><i class="material-icons">warning</i> Points d'attention</h4>
+                                <ul>
+                                    <li>Vérifier la conformité légale</li>
+                                    <li>Anticiper les évolutions futures</li>
+                                    <li>Prévoir les modalités de dissolution</li>
+                                    <li>Définir clairement les responsabilités</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="material-icons">info</i> Points essentiels</h4>
+                        <ul>
+                            <li>Les statuts sont indispensables pour garantir le bon fonctionnement et la légalité</li>
+                            <li>Ils doivent être accessibles à tous les membres de l'association</li>
+                            <li>Une modification nécessite toujours une Assemblée Générale Extraordinaire</li>
+                            <li>Il est recommandé de faire relire les statuts par un juriste avant adoption</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Onglet Comptabilité -->
+                <div class="tab-panel" [class.active]="activeTab === 'comptabilite'">
+                    <h2>Gestion comptable d'une association</h2>
+
+                    <div class="accounting-cards">
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Tenue de comptabilité</h3>
+                                <span class="badge mandatory">Obligatoire</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Exigence :</strong> Enregistrer toutes les recettes et dépenses de manière
+                                    régulière.</p>
+                                <p><strong>Fréquence :</strong> Saisie au fur et à mesure des opérations financières.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Conservation des pièces</h3>
+                                <span class="badge duration">10 ans</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Documents :</strong> Factures, reçus, contrats, relevés bancaires.</p>
+                                <p><strong>Durée légale :</strong> Conservation pendant au moins 10 ans.</p>
+                                <p><strong>Support :</strong> Papier ou numérique (avec valeur probante).</p>
+                            </div>
+                        </div>
+
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Comptes annuels</h3>
+                                <span class="badge conditional">Si applicable</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Documents :</strong> Compte de résultat et bilan.</p>
+                                <p><strong>Concernées :</strong> Associations importantes ou avec activité économique.
+                                </p>
+                                <p><strong>Deadline :</strong> Avant l'assemblée générale annuelle.</p>
+                            </div>
+                        </div>
+
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Présentation en AG</h3>
+                                <span class="badge annual">Annuel</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Obligation :</strong> Présentation des comptes en assemblée générale.</p>
+                                <p><strong>Validation :</strong> Approbation par vote des membres.</p>
+                                <p><strong>Quitus :</strong> Décharge donnée aux dirigeants.</p>
+                            </div>
+                        </div>
+
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Procès-verbal</h3>
+                                <span class="badge documentation">Documentation</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Contenu :</strong> Validation des comptes et quitus aux dirigeants.</p>
+                                <p><strong>Importance :</strong> Preuve légale de l'approbation.</p>
+                                <p><strong>Conservation :</strong> Archives de l'association.</p>
+                            </div>
+                        </div>
+
+                        <div class="accounting-card">
+                            <div class="card-header">
+                                <h3>Obligations fiscales</h3>
+                                <span class="badge fiscal">Fiscal</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Déclarations :</strong> Déclarations fiscales obligatoires.</p>
+                                <p><strong>TVA :</strong> Si applicable selon l'activité.</p>
+                                <p><strong>Échéances :</strong> Respect des dates limites.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accounting-types">
+                        <h3>Types de comptabilité selon l'association</h3>
+
+                        <div class="type-comparison">
+                            <div class="type-card simple">
+                                <div class="type-header">
+                                    <h4>Comptabilité simplifiée</h4>
+                                    <span class="type-badge small">Petites associations</span>
+                                </div>
+                                <div class="type-content">
+                                    <p><strong>Principe :</strong> Comptabilité de trésorerie (recettes/dépenses)</p>
+                                    <p><strong>Adaptée pour :</strong></p>
+                                    <ul>
+                                        <li>Budget limité</li>
+                                        <li>Peu d'opérations financières</li>
+                                        <li>Fonctionnement basique</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="type-card complex">
+                                <div class="type-header">
+                                    <h4>Comptabilité rigoureuse</h4>
+                                    <span class="type-badge large">Grandes associations</span>
+                                </div>
+                                <div class="type-content">
+                                    <p><strong>Principe :</strong> Comptabilité complète avec bilan</p>
+                                    <p><strong>Obligatoire pour :</strong></p>
+                                    <ul>
+                                        <li>Associations recevant des subventions publiques</li>
+                                        <li>Activité économique importante</li>
+                                        <li>Chiffre d'affaires élevé</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="material-icons">lightbulb</i> Points clés à retenir</h4>
+                        <ul>
+                            <li>La comptabilité doit être adaptée à la taille et aux activités de l'association</li>
+                            <li>Les subventions publiques impliquent souvent des obligations comptables renforcées</li>
+                            <li>La transparence financière renforce la confiance des membres et partenaires</li>
+                            <li>Un expert-comptable peut être nécessaire pour les associations complexes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Onglet Aspects juridiques -->
+                <div class="tab-panel" [class.active]="activeTab === 'juridique'">
+                    <h2>Aspects juridiques des associations</h2>
+
+                    <div class="intro-section">
+                        <div class="legal-intro-card">
+                            <h3><i class="material-icons">account_balance</i> Cadre juridique</h3>
+                            <p>L'association est une <strong>personne morale autonome</strong> soumise à un cadre légal
+                                strict pour garantir transparence, responsabilité et bonne gouvernance.</p>
+                            <div class="local-law-badge">
+                                <i class="material-icons">location_on</i>
+                                <span>Spécificités du droit local Alsace-Moselle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="juridique-cards">
+                        <div class="juridique-card">
+                            <div class="card-header">
+                                <h3>Personnalité juridique</h3>
+                                <span class="badge fundamental">Fondamental</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Acquisition :</strong> Par inscription au registre des associations.</p>
+                                <p><strong>Effet :</strong> L'association devient une personne morale distincte des
+                                    membres.</p>
+                                <p><strong>Conséquence :</strong> Existence juridique autonome et indépendante.</p>
+                            </div>
+                        </div>
+
+                        <div class="juridique-card">
+                            <div class="card-header">
+                                <h3>Capacité juridique</h3>
+                                <span class="badge capacity">Droits</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Justice :</strong> Peut agir en justice (ester en justice).</p>
+                                <p><strong>Patrimoine :</strong> Peut posséder des biens propres.</p>
+                                <p><strong>Contrats :</strong> Peut signer des contrats en son nom.</p>
+                                <p><strong>Engagements :</strong> Peut prendre des engagements juridiques.</p>
+                            </div>
+                        </div>
+
+                        <div class="juridique-card">
+                            <div class="card-header">
+                                <h3>Agrément administratif</h3>
+                                <span class="badge authorization">Autorisation</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Nécessité :</strong> Certaines activités nécessitent un agrément.</p>
+                                <p><strong>Contrôle :</strong> Implique un contrôle de l'administration.</p>
+                                <p><strong>Secteurs :</strong> Sport, éducation, santé, social, etc.</p>
+                                <p><strong>Procédure :</strong> Dossier à constituer auprès des autorités.</p>
+                            </div>
+                        </div>
+
+                        <div class="juridique-card">
+                            <div class="card-header">
+                                <h3>Gestion désintéressée</h3>
+                                <span class="badge fiscal">Fiscal</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Bénévolat :</strong> Gestion bénévole obligatoire.</p>
+                                <p><strong>Distribution :</strong> Aucune distribution de bénéfices aux membres.</p>
+                                <p><strong>Rémunération :</strong> Rémunération limitée des dirigeants.</p>
+                                <p><strong>Avantages :</strong> Condition pour les avantages fiscaux.</p>
+                            </div>
+                        </div>
+
+                        <div class="juridique-card local-specificity">
+                            <div class="card-header">
+                                <h3>But lucratif</h3>
+                                <span class="badge local">Droit local</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Spécificité :</strong> En droit local, certaines associations peuvent avoir
+                                    un but lucratif.</p>
+                                <p><strong>Exception :</strong> N'est pas la norme habituelle.</p>
+                                <p><strong>Conditions :</strong> Encadrement juridique strict.</p>
+                                <p><strong>Territoire :</strong> Alsace-Moselle uniquement.</p>
+                            </div>
+                        </div>
+
+                        <div class="juridique-card">
+                            <div class="card-header">
+                                <h3>Utilité publique</h3>
+                                <span class="badge public">Public</span>
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Reconnaissance :</strong> Possible en droit local.</p>
+                                <p><strong>Avantages :</strong> Bénéfices fiscaux liés aux dons.</p>
+                                <p><strong>Conditions :</strong> Mission d'intérêt général.</p>
+                                <p><strong>Procédure :</strong> Demande auprès des autorités compétentes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="organizational-framework">
+                        <h3>Cadre organisationnel</h3>
+
+                        <div class="framework-grid">
+                            <div class="framework-item">
+                                <div class="framework-icon">
+                                    <i class="material-icons">description</i>
+                                </div>
+                                <div class="framework-content">
+                                    <h4>Statuts</h4>
+                                    <p>Définissent le cadre légal et organisationnel de l'association</p>
+                                </div>
+                            </div>
+
+                            <div class="framework-item">
+                                <div class="framework-icon">
+                                    <i class="material-icons">rule</i>
+                                </div>
+                                <div class="framework-content">
+                                    <h4>Règlement intérieur</h4>
+                                    <p>Précise les règles internes de fonctionnement</p>
+                                </div>
+                            </div>
+
+                            <div class="framework-item">
+                                <div class="framework-icon">
+                                    <i class="material-icons">groups</i>
+                                </div>
+                                <div class="framework-content">
+                                    <h4>Assemblée générale</h4>
+                                    <p>Respect des règles de quorum, majorité et convocation</p>
+                                </div>
+                            </div>
+
+                            <div class="framework-item">
+                                <div class="framework-icon">
+                                    <i class="material-icons">how_to_vote</i>
+                                </div>
+                                <div class="framework-content">
+                                    <h4>Délibérations</h4>
+                                    <p>Procès-verbaux et validation des décisions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="legal-obligations">
+                        <h3>Obligations légales</h3>
+
+                        <div class="obligations-list">
+                            <div class="obligation-item">
+                                <div class="obligation-icon accounting">
+                                    <i class="material-icons">account_balance_wallet</i>
+                                </div>
+                                <div class="obligation-content">
+                                    <h4>Comptabilité</h4>
+                                    <p>Tenue d'une comptabilité régulière et transparente</p>
+                                </div>
+                            </div>
+
+                            <div class="obligation-item">
+                                <div class="obligation-icon documentation">
+                                    <i class="material-icons">edit_note</i>
+                                </div>
+                                <div class="obligation-content">
+                                    <h4>Procès-verbaux</h4>
+                                    <p>Rédaction et conservation des PV d'assemblées</p>
+                                </div>
+                            </div>
+
+                            <div class="obligation-item">
+                                <div class="obligation-icon privacy">
+                                    <i class="material-icons">privacy_tip</i>
+                                </div>
+                                <div class="obligation-content">
+                                    <h4>RGPD</h4>
+                                    <p>Respect du règlement sur la protection des données</p>
+                                </div>
+                            </div>
+
+                            <div class="obligation-item">
+                                <div class="obligation-icon transparency">
+                                    <i class="material-icons">visibility</i>
+                                </div>
+                                <div class="obligation-content">
+                                    <h4>Transparence</h4>
+                                    <p>Information des membres et des autorités</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="local-law-section">
+                        <h3><i class="material-icons">place</i> Spécificités du droit local Alsace-Moselle</h3>
+                        <div class="local-features">
+                            <div class="feature-card">
+                                <h4>Régime particulier</h4>
+                                <p>Les associations en Alsace-Moselle bénéficient d'un régime juridique spécifique
+                                    hérité du droit allemand.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>But lucratif possible</h4>
+                                <p>Contrairement au droit français général, certaines associations peuvent avoir un but
+                                    lucratif.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>Utilité publique facilitée</h4>
+                                <p>Procédure de reconnaissance d'utilité publique adaptée au contexte local.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="material-icons">balance</i> Principes directeurs</h4>
+                        <ul>
+                            <li>L'association doit respecter un cadre légal strict mais bénéficie d'une grande liberté
+                                d'organisation</li>
+                            <li>La personnalité juridique confère des droits mais aussi des responsabilités</li>
+                            <li>Le droit local Alsace-Moselle offre des spécificités avantageuses</li>
+                            <li>La conformité juridique est essentielle pour la pérennité de l'association</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

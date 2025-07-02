@@ -1,5 +1,136 @@
-<footer>
-    <div>
-        <p>&copy; {{ currentYear }} Collectif Metz Numérique</p>
+<footer role="contentinfo">
+    <div class="footer-main">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Section Logo et Description -->
+                <div class="footer-section brand-section">
+                    <div class="footer-logo">
+                        <img src="images/logo_high.png" alt="Logo Collectif Metz Numérique" class="logo-img">
+                        <h3>Collectif Metz Numérique</h3>
+                    </div>
+                    <p class="footer-description">
+                        Association visant à favoriser le lien social, la découverte culturelle et la participation
+                        citoyenne à Metz, grâce à des plateformes numériques, des échanges communautaires, des contenus
+                        géolocalisés et des outils interactifs.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@collectif-metz-numerique" id="tiktok" target="_blank"
+                            rel="noopener noreferrer" aria-label="TikTok" class="social-link"
+                            matTooltip="Suivez-nous sur TikTok" matTooltipPosition="above">
+                            <mat-icon>tiktok</mat-icon>
+                        </a>
+                        <a href="https://www.instagram.com/collectif_metz_numerique" id="instagram" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram" class="social-link"
+                            matTooltip="Suivez-nous sur Instagram" matTooltipPosition="above">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/collectif.metz.numerique" id="facebook" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook" class="social-link"
+                            matTooltip="Rejoignez notre page Facebook" matTooltipPosition="above">
+                            <mat-icon>facebook</mat-icon>
+                        </a>
+                        <a href="https://discord.gg/collectif-metz-numerique" id="discord" target="_blank"
+                            rel="noopener noreferrer" aria-label="Discord" class="social-link"
+                            matTooltip="Rejoignez notre serveur Discord" matTooltipPosition="above">
+                            <mat-icon>discord</mat-icon>
+                        </a>
+                        <a href="mailto:contact@collectif-metz-numerique.fr" aria-label="Email" class="social-link"
+                            matTooltip="Contactez-nous par email" matTooltipPosition="above">
+                            <mat-icon>mail</mat-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section Navigation -->
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a routerLink="/" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Accueil</a></li>
+                        <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
+                        <li><a routerLink="/evenements" routerLinkActive="active">Événements</a></li>
+                        <li><a routerLink="/adhesion" routerLinkActive="active">Adhésion</a></li>
+                        <li><a routerLink="/actualites" routerLinkActive="active">Actualités</a></li>
+                        <li><a routerLink="/partenaires" routerLinkActive="active">Partenaires</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section Nos Projets -->
+                <div class="footer-section">
+                    <h4>Nos Projets</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" routerLink="/projets/metz-discord">Metz Discord</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section Contact -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <mat-icon>mail</mat-icon>
+                            <div>
+                                <p>contact&#64;collectif-metz-numerique.fr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Adhésion -->
+                <div class="footer-section adhesion-section">
+                    <h4>Adhésion</h4>
+                    <p>Rejoignez notre communauté et participez à nos projets !</p>
+                    <div class="adhesion-content">
+                        <p class="adhesion-benefits">
+                            <mat-icon>check_circle</mat-icon>
+                            Accès aux événements exclusifs
+                        </p>
+                        <p class="adhesion-benefits">
+                            <mat-icon>check_circle</mat-icon>
+                            Participation aux projets
+                        </p>
+                        <p class="adhesion-benefits">
+                            <mat-icon>check_circle</mat-icon>
+                            Réseau professionnel
+                        </p>
+                        <a routerLink="/adhesion" class="adhesion-btn" matTooltip="Rejoindre l'association"
+                            matTooltipPosition="above">
+                            <mat-icon>person_add</mat-icon>
+                            Adhérer maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Copyright -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    <p>© {{ currentYear }} Collectif Metz Numérique. Tous droits réservés.</p>
+                </div>
+                <div class="legal-links">
+                    <a routerLink="/informations-legales">Informations légales</a>
+                    <a routerLink="/politique-confidentialite">Politique de confidentialité</a>
+                    <a routerLink="/mentions-legales">Mentions légales</a>
+                    <a routerLink="/cookies">Gestion des cookies</a>
+                </div>
+                <div class="footer-badges">
+                    <span class="badge local-badge">
+                        <mat-icon>location_on</mat-icon>
+                        Droit local Alsace-Moselle
+                    </span>
+                    <span class="badge association-badge">
+                        <mat-icon>group</mat-icon>
+                        Association loi 1901
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>

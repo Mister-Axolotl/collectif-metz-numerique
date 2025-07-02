@@ -8,6 +8,8 @@ import { ActualitesComponent } from './actualites-component/actualites-component
 import { PartenairesComponent } from './partenaires-component/partenaires-component';
 import { ContactComponent } from './contact-component/contact-component';
 import { TestComponent } from './test-component/test-component';
+import { InformationsLegalesComponent } from './informations-legales-component/informations-legales-component';
+import { PageNonTrouveeComponent } from './page-non-trouvee-component/page-non-trouvee-component';
 
 export const routes: Routes = [
     {
@@ -43,11 +45,15 @@ export const routes: Routes = [
         component: ContactComponent
     },
     {
+        path: 'membre/info',
+        component: InformationsLegalesComponent
+    },
+    {
         path: 'test',
         component: TestComponent
     },
     {
         path: '**',
-        redirectTo: ''
+        component: PageNonTrouveeComponent
     }
 ];

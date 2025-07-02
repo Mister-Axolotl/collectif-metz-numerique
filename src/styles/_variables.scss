@@ -4,13 +4,14 @@
     --secondary-color: #457b9d;
     --tertiary-color: #722f37;
     --accent-color: #a8dadc;
-    --background-color: #f1faee;
+    --background-color: #f8f9fa;
     --text-color: #202427;
     --alert-color: #e63946;
     --success-color: #2a9d8f;
     --warning-color: #ffb703;
     --info-color: #0077b6;
     --white: #ffffff;
+    --grey: #6c757d;
     --black: #0d0d0d;
 
     // Dynamic text colors for buttons (will be calculated)
@@ -32,6 +33,7 @@ $success-color: var(--success-color);
 $warning-color: var(--warning-color);
 $info-color: var(--info-color);
 $white: var(--white);
+$grey: var(--gray);
 $black: var(--black);
 
 // Dynamic text colors

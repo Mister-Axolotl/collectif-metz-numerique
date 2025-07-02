@@ -1,0 +1,82 @@
+<div class="not-found-container">
+    <div class="not-found-content">
+        <!-- Illustration 404 -->
+        <div class="error-illustration">
+            <div class="error-number">404</div>
+            <div class="error-icon">
+                <mat-icon class="broken-link">link_off</mat-icon>
+            </div>
+        </div>
+
+        <!-- Message d'erreur -->
+        <div class="error-message">
+            <h1>Oups ! Page introuvable</h1>
+            <p class="error-description">
+                La page que vous recherchez semble avoir disparu dans les méandres du web.
+                Elle a peut-être été déplacée, supprimée ou n'a jamais existé.
+            </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="error-actions">
+            <button mat-raised-button color="primary" class="home-btn" routerLink="/"
+                matTooltip="Retourner à l'accueil">
+                <mat-icon>home</mat-icon>
+                Retour à l'accueil
+            </button>
+
+            <button mat-stroked-button class="back-btn" (click)="goBack()" matTooltip="Page précédente">
+                <mat-icon>arrow_back</mat-icon>
+                Page précédente
+            </button>
+        </div>
+
+        <!-- Navigation rapide -->
+        <div class="quick-navigation">
+            <h3>Où souhaitez-vous aller ?</h3>
+            <div class="nav-cards">
+                <a routerLink="/a-propos" class="nav-card">
+                    <mat-icon>info</mat-icon>
+                    <span>À propos</span>
+                </a>
+                <a routerLink="/evenements" class="nav-card">
+                    <mat-icon>event</mat-icon>
+                    <span>Événements</span>
+                </a>
+                <a routerLink="/adhesion" class="nav-card">
+                    <mat-icon>person_add</mat-icon>
+                    <span>Adhésion</span>
+                </a>
+                <a routerLink="/contact" class="nav-card">
+                    <mat-icon>contact_mail</mat-icon>
+                    <span>Contact</span>
+                </a>
+                <a routerLink="/actualites" class="nav-card">
+                    <mat-icon>article</mat-icon>
+                    <span>Actualités</span>
+                </a>
+                <a routerLink="/partenaires" class="nav-card">
+                    <mat-icon>handshake</mat-icon>
+                    <span>Partenaires</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Informations de contact -->
+        <div class="contact-help">
+            <p>Besoin d'aide ? Contactez-nous :</p>
+            <a href="mailto:contact@collectif-metz-numerique.fr" class="contact-link">
+                <mat-icon>mail</mat-icon>
+                contact&#64;collectif-metz-numerique.fr
+            </a>
+        </div>
+    </div>
+
+    <!-- Animation de fond -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+</div>

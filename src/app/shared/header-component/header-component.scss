@@ -21,7 +21,7 @@ header {
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0 1rem 1rem 1rem;
         position: relative;
     }
 
@@ -40,10 +40,8 @@ header {
     }
 
     .logo {
-        margin-bottom: 0.5rem;
-
         .site-logo {
-            max-height: 120px;
+            max-height: 150px;
             width: auto;
         }
     }
@@ -111,7 +109,8 @@ header {
             }
 
             &.active {
-                background-color: $primary-color;
+                background-color: $secondary-color;
+                border-color: $secondary-color;
                 color: $white;
             }
         }

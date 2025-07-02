@@ -1,0 +1,1268 @@
+@use "variables" as *;
+
+// Color Variables
+$primary-blue: #2c3e50;
+$secondary-blue: #3498db;
+$blue-light: #e3f2fd;
+$blue-dark: #1976d2;
+$blue-gradient-start: #667eea;
+$blue-gradient-end: #764ba2;
+$blue-gradient-alt-start: #3498db;
+$blue-gradient-alt-end: #2980b9;
+$blue-badge: #1565c0;
+$blue-border: #2980b9;
+
+$purple: #7b1fa2;
+$purple-light: #f3e5f5;
+$purple-dark: #8e44ad;
+$purple-gradient-start: #9b59b6;
+$purple-gradient-end: #8e44ad;
+$purple-card-start: #d299c2;
+$purple-card-end: #fef9d7;
+$purple-border: #8e24aa;
+
+$green: #388e3c;
+$green-light: #e8f5e8;
+$green-dark: #2e7d32;
+$green-gradient-start: #27ae60;
+$green-gradient-end: #2ecc71;
+$green-badge: #26a69a;
+$green-card-start: #a8edea;
+$green-card-end: #fed6e3;
+
+$orange: #f57c00;
+$orange-light: #fff3e0;
+$orange-dark: #ff9800;
+$orange-gradient-start: #f39c12;
+$orange-gradient-end: #e67e22;
+$orange-badge: #ef6c00;
+
+$yellow: #ffd700;
+$yellow-light: #fff8e1;
+
+$red: #e74c3c;
+$red-light: #ffebee;
+$red-dark: #c62828;
+$red-gradient-start: #e74c3c;
+$red-gradient-end: #c0392b;
+$red-card-start: #fdf2f2;
+$red-card-end: #ffffff;
+$red-badge: #d32f2f;
+$red-border: #ad1457;
+
+$pink: #fce4ec;
+$pink-dark: #c2185b;
+$pink-card-start: #ffecd2;
+$pink-card-end: #fcb69f;
+$pink-gradient-start: #ff7675;
+$pink-gradient-end: #fd79a8;
+
+$grey: #6c757d;
+$grey-light: #e9ecef;
+$grey-dark: #495057;
+$grey-bg: #f8f9fa;
+$grey-shadow: rgba(0, 0, 0, 0.1);
+$grey-shadow-hover: rgba(0, 0, 0, 0.15);
+$grey-shadow-light: rgba(0, 0, 0, 0.08);
+
+$white: #fff;
+$black: #1a1a1a;
+
+.legal-info-container {
+    min-height: 100vh;
+    background-color: $grey-bg;
+    padding: 2rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+        color: $primary-blue;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .subtitle {
+        color: $grey;
+        font-size: 1.1rem;
+    }
+}
+
+.tabs-container {
+    background: $white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px $grey-shadow;
+    overflow: hidden;
+}
+
+.tabs-nav {
+    display: flex;
+    background: linear-gradient(135deg, $blue-gradient-start 0%, $blue-gradient-end 100%);
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+
+    .tab-button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1.25rem 1rem;
+        background: transparent;
+        border: none;
+        color: rgba($white, 0.8);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+            color: $white;
+            background: rgba($white, 0.1);
+        }
+
+        &.active {
+            color: $white;
+            background: rgba($white, 0.15);
+            border-bottom-color: $yellow;
+        }
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.tab-content {
+    padding: 0;
+}
+
+.tab-panel {
+    display: none;
+    padding: 2rem;
+
+    &.active {
+        display: block;
+    }
+
+    h2 {
+        color: $primary-blue;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid $secondary-blue;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.meeting-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.meeting-card {
+    background: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px $grey-shadow;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.2rem;
+        margin: 0;
+        font-weight: 600;
+    }
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.founding {
+        background: $blue-light;
+        color: $blue-dark;
+    }
+
+    &.ordinary {
+        background: $green-light;
+        color: $green;
+    }
+
+    &.extraordinary {
+        background: $orange-light;
+        color: $orange;
+    }
+
+    &.management {
+        background: $purple-light;
+        color: $purple;
+    }
+
+    &.operational {
+        background: $pink;
+        color: $pink-dark;
+    }
+}
+
+.card-content {
+    p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        color: $grey-dark;
+
+        strong {
+            color: $primary-blue;
+        }
+    }
+}
+
+.info-box {
+    background: linear-gradient(135deg, $blue-gradient-start 0%, $blue-gradient-end 100%);
+    color: $white;
+    padding: 1.5rem;
+    border-radius: 8px;
+
+    h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 1.5rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+.accounting-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.accounting-card {
+    background: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px $grey-shadow;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+}
+
+// Badges supplémentaires pour la comptabilité
+.badge {
+    &.mandatory {
+        background: $red-light;
+        color: $red-badge;
+    }
+
+    &.duration {
+        background: $green-light;
+        color: $green-dark;
+    }
+
+    &.conditional {
+        background: $yellow-light;
+        color: $orange;
+    }
+
+    &.annual {
+        background: $blue-light;
+        color: $blue-dark;
+    }
+
+    &.documentation {
+        background: $purple-light;
+        color: $purple;
+    }
+
+    &.fiscal {
+        background: $pink;
+        color: $pink-dark;
+    }
+}
+
+.accounting-types {
+    margin-bottom: 2rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+}
+
+.type-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.type-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px $grey-shadow;
+
+    &.simple {
+        background: linear-gradient(135deg, $green-card-start 0%, $green-card-end 100%);
+        border-left: 4px solid $green-badge;
+    }
+
+    &.complex {
+        background: linear-gradient(135deg, $purple-card-start 0%, $purple-card-end 100%);
+        border-left: 4px solid $purple-border;
+    }
+}
+
+.type-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h4 {
+        color: $primary-blue;
+        font-size: 1.2rem;
+        margin: 0;
+        font-weight: 600;
+    }
+}
+
+.type-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.small {
+        background: rgba($green, 0.2);
+        color: $green-dark;
+    }
+
+    &.large {
+        background: rgba($purple, 0.2);
+        color: $purple;
+    }
+}
+
+.type-content {
+    p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        color: $primary-blue;
+
+        strong {
+            color: $black;
+        }
+    }
+
+    ul {
+        margin: 0.5rem 0 0 1rem;
+
+        li {
+            margin-bottom: 0.3rem;
+            color: $primary-blue;
+            line-height: 1.4;
+        }
+    }
+}
+
+// Responsive pour comptabilité
+@media (max-width: 768px) {
+    .accounting-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .type-comparison {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .type-card {
+        padding: 1rem;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .tabs-nav {
+        flex-direction: column;
+
+        .tab-button {
+            padding: 1rem;
+        }
+    }
+
+    .meeting-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-panel {
+        padding: 1.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+}
+
+.accounting-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.accounting-card {
+    background: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px $grey-shadow;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+}
+
+// Badges supplémentaires pour la comptabilité
+.badge {
+    &.mandatory {
+        background: $red-light;
+        color: $red-badge;
+    }
+
+    &.duration {
+        background: $green-light;
+        color: $green-dark;
+    }
+
+    &.conditional {
+        background: $yellow-light;
+        color: $orange;
+    }
+
+    &.annual {
+        background: $blue-light;
+        color: $blue-dark;
+    }
+
+    &.documentation {
+        background: $purple-light;
+        color: $purple;
+    }
+
+    &.fiscal {
+        background: $pink;
+        color: $pink-dark;
+    }
+}
+
+.accounting-types {
+    margin-bottom: 2rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+}
+
+.type-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.type-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px $grey-shadow;
+
+    &.simple {
+        background: linear-gradient(135deg, $green-card-start 0%, $green-card-end 100%);
+        border-left: 4px solid $green-badge;
+    }
+
+    &.complex {
+        background: linear-gradient(135deg, $purple-card-start 0%, $purple-card-end 100%);
+        border-left: 4px solid $purple-border;
+    }
+}
+
+.type-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h4 {
+        color: $primary-blue;
+        font-size: 1.2rem;
+        margin: 0;
+        font-weight: 600;
+    }
+}
+
+.type-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &.small {
+        background: rgba($green, 0.2);
+        color: $green-dark;
+    }
+
+    &.large {
+        background: rgba($purple, 0.2);
+        color: $purple;
+    }
+}
+
+.type-content {
+    p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        color: $primary-blue;
+
+        strong {
+            color: $black;
+        }
+    }
+
+    ul {
+        margin: 0.5rem 0 0 1rem;
+
+        li {
+            margin-bottom: 0.3rem;
+            color: $primary-blue;
+            line-height: 1.4;
+        }
+    }
+}
+
+// Responsive pour comptabilité
+@media (max-width: 768px) {
+    .accounting-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .type-comparison {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .type-card {
+        padding: 1rem;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .tabs-nav {
+        flex-direction: column;
+
+        .tab-button {
+            padding: 1rem;
+        }
+    }
+
+    .meeting-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-panel {
+        padding: 1.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+}
+
+.definition-card {
+    background: linear-gradient(135deg, $blue-gradient-start 0%, $blue-gradient-end 100%);
+    color: $white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+
+        i {
+            font-size: 1.6rem;
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+}
+
+.statuts-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.statuts-card {
+    background: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px $grey-shadow;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+}
+
+// Badges pour les statuts
+.badge {
+    &.fundamental {
+        background: $green-light;
+        color: $green-dark;
+    }
+
+    &.legal {
+        background: $orange-light;
+        color: $orange-badge;
+    }
+
+    &.procedures {
+        background: $blue-light;
+        color: $blue-badge;
+    }
+
+    &.modification {
+        background: $pink;
+        color: $red-border;
+    }
+}
+
+.mandatory-content {
+    margin-bottom: 3rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid $secondary-blue;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.mandatory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.mandatory-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px $grey-shadow-light;
+    border-left: 4px solid $secondary-blue;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateX(4px);
+    }
+}
+
+.item-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, $secondary-blue, $blue-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        color: $white;
+        font-size: 24px;
+    }
+}
+
+.item-content {
+    h4 {
+        color: $primary-blue;
+        font-size: 1.1rem;
+        margin: 0 0 0.5rem 0;
+        font-weight: 600;
+    }
+
+    p {
+        color: $grey;
+        line-height: 1.4;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+}
+
+.best-practices {
+    margin-bottom: 2rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.practices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.practice-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+
+    &.tip {
+        background: linear-gradient(135deg, $green-card-start 0%, $green-card-end 100%);
+        border-left: 4px solid #00bcd4; // No variable for this specific blue/cyan
+    }
+
+    &.warning {
+        background: linear-gradient(135deg, $pink-card-start 0%, $pink-card-end 100%);
+        border-left: 4px solid $orange-dark;
+    }
+
+    h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $primary-blue;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 1.2rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            color: $primary-blue;
+            line-height: 1.4;
+        }
+    }
+}
+
+// Responsive pour statuts
+@media (max-width: 768px) {
+    .statuts-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .mandatory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mandatory-item {
+        padding: 1rem;
+
+        .item-icon {
+            width: 40px;
+            height: 40px;
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .practices-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .definition-card {
+        padding: 1.5rem;
+
+        h3 {
+            font-size: 1.2rem;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .practice-card {
+        padding: 1rem;
+
+        h4 {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .mandatory-item {
+        flex-direction: column;
+        text-align: center;
+
+        .item-icon {
+            align-self: center;
+        }
+    }
+}
+
+// Ajouts pour les aspects juridiques
+.legal-intro-card {
+    background: linear-gradient(135deg, $primary-blue 0%, $secondary-blue 100%);
+    color: $white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+
+        i {
+            font-size: 1.6rem;
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.local-law-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba($white, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    i {
+        font-size: 1rem;
+    }
+}
+
+.juridique-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.juridique-card {
+    background: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px $grey-shadow;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+
+    &.local-specificity {
+        border-left: 4px solid $red;
+        background: linear-gradient(135deg, $red-card-start 0%, $red-card-end 100%);
+    }
+}
+
+// Badges pour juridique
+.badge {
+    &.capacity {
+        background: $green-light;
+        color: $green-dark;
+    }
+
+    &.authorization {
+        background: $yellow-light;
+        color: $orange;
+    }
+
+    &.fiscal {
+        background: $blue-light;
+        color: $blue-badge;
+    }
+
+    &.local {
+        background: $red-light;
+        color: $red-dark;
+    }
+
+    &.public {
+        background: $purple-light;
+        color: $purple;
+    }
+}
+
+.organizational-framework {
+    margin-bottom: 3rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid $secondary-blue;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.framework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.framework-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px $grey-shadow-light;
+    border-left: 4px solid $purple;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateX(4px);
+    }
+}
+
+.framework-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, $purple-gradient-start, $purple-gradient-end);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        color: $white;
+        font-size: 24px;
+    }
+}
+
+.framework-content {
+    h4 {
+        color: $primary-blue;
+        font-size: 1.1rem;
+        margin: 0 0 0.5rem 0;
+        font-weight: 600;
+    }
+
+    p {
+        color: $grey;
+        line-height: 1.4;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+}
+
+.legal-obligations {
+    margin-bottom: 3rem;
+
+    h3 {
+        color: $primary-blue;
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid $red;
+        padding-bottom: 0.5rem;
+    }
+}
+
+.obligations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.obligation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px $grey-shadow-light;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px $grey-shadow-hover;
+    }
+}
+
+.obligation-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.accounting {
+        background: linear-gradient(135deg, $green-gradient-start, $green-gradient-end);
+    }
+
+    &.documentation {
+        background: linear-gradient(135deg, $secondary-blue, $blue-border);
+    }
+
+    &.privacy {
+        background: linear-gradient(135deg, $red-gradient-start, $red-gradient-end);
+    }
+
+    &.transparency {
+        background: linear-gradient(135deg, $orange-gradient-start, $orange-gradient-end);
+    }
+
+    i {
+        color: $white;
+        font-size: 24px;
+    }
+}
+
+.obligation-content {
+    h4 {
+        color: $primary-blue;
+        font-size: 1.1rem;
+        margin: 0 0 0.5rem 0;
+        font-weight: 600;
+    }
+
+    p {
+        color: $grey;
+        line-height: 1.4;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+}
+
+.local-law-section {
+    margin-bottom: 2rem;
+
+    h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: $primary-blue;
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        i {
+            color: $red;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.local-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, $pink-gradient-start 0%, $pink-gradient-end 100%);
+    color: $white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+
+    h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    p {
+        line-height: 1.5;
+        margin: 0;
+        opacity: 0.95;
+    }
+}
+
+// Responsive pour juridique
+@media (max-width: 768px) {
+    .juridique-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .framework-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .obligations-list {
+        grid-template-columns: 1fr;
+    }
+
+    .local-features {
+        grid-template-columns: 1fr;
+    }
+
+    .legal-intro-card {
+        padding: 1.5rem;
+
+        h3 {
+            font-size: 1.2rem;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .framework-item,
+    .obligation-item {
+        padding: 1rem;
+
+        .framework-icon,
+        .obligation-icon {
+            width: 40px;
+            height: 40px;
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .feature-card {
+        padding: 1rem;
+
+        h4 {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .framework-item,
+    .obligation-item {
+        flex-direction: column;
+        text-align: center;
+
+        .framework-icon,
+        .obligation-icon {
+            align-self: center;
+        }
+    }
+
+    .local-law-section h3 {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
