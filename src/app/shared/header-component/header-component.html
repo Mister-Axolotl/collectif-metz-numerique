@@ -1,5 +1,6 @@
 <header role="banner">
     <div class="container">
+        <!-- Section principale avec logo, titre et contact -->
         <div class="header-top">
             <div class="logo-title-section">
                 <a routerLink="/" aria-label="Accueil - Collectif Metz Numérique">
@@ -19,21 +20,32 @@
                     <span>Profil</span>
                 </a>
             </div>
+            <!-- Burger menu button (mobile only) -->
+            <button class="burger-btn" type="button" (click)="toggleMobileMenu()" aria-label="Ouvrir le menu"
+                [attr.aria-expanded]="isMobileMenuOpen">
+                <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+            </button>
         </div>
     </div>
 
     <!-- Barre de navigation sticky -->
-    <nav role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky">
+    <nav role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky"
+        [class.mobile-open]="isMobileMenuOpen">
         <div class="nav-container">
             <ul>
-                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        (click)="closeMobileMenu()">Accueil</a></li>
+                <li><a routerLink="/a-propos" routerLinkActive="active" (click)="closeMobileMenu()">À propos</a></li>
+                <li><a routerLink="/evenements" routerLinkActive="active" (click)="closeMobileMenu()">Événements</a>
                 </li>
-                <li><a routerLink="/a-propos" routerLinkActive="active">À propos</a></li>
-                <li><a routerLink="/evenements" routerLinkActive="active">Événements</a></li>
-                <li><a routerLink="/adhesion" routerLinkActive="active">Adhésion</a></li>
-                <li><a routerLink="/actualites" routerLinkActive="active">Actualités</a></li>
-                <li><a routerLink="/partenaires" routerLinkActive="active">Partenaires</a></li>
+                <li><a routerLink="/adhesion" routerLinkActive="active" (click)="closeMobileMenu()">Adhésion</a></li>
+                <li><a routerLink="/actualites" routerLinkActive="active" (click)="closeMobileMenu()">Actualités</a>
+                </li>
+                <li><a routerLink="/partenaires" routerLinkActive="active" (click)="closeMobileMenu()">Partenaires</a>
+                </li>
             </ul>
         </div>
+        <!-- Overlay pour fermer le menu en cliquant à côté -->
+        <div class="mobile-menu-overlay" *ngIf="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
     </nav>
 </header>

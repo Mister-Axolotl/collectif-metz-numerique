@@ -14,9 +14,19 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class HeaderComponent {
   isNavSticky = false;
+  isMobileMenuOpen = false;
 
   @HostListener('window:scroll')
   onWindowScroll() {
+    // Désactive sticky sur mobile (largeur < 900px)
+    if (window.innerWidth < 900 || this.isMobileMenuOpen) {
+      if (this.isNavSticky) {
+        this.isNavSticky = false;
+        document.body.classList.remove('nav-sticky');
+      }
+      return;
+    }
+
     const headerTop = document.querySelector('.header-top');
     if (!headerTop) return;
 
@@ -36,5 +46,21 @@ export class HeaderComponent {
         document.body.classList.remove('nav-sticky');
       }
     }
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (this.isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      this.isNavSticky = false; // désactive sticky si menu mobile ouvert
+      document.body.classList.remove('nav-sticky');
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+    document.body.style.overflow = '';
   }
 }
