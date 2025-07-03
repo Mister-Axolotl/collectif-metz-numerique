@@ -25,17 +25,31 @@ export class ThemeService {
     updateColor(colorName: string, colorValue: string): void {
         if (isPlatformBrowser(this.platformId)) {
             document.documentElement.style.setProperty(`--${colorName}-color`, colorValue);
-
-            // Auto-update text colors based on background brightness
             this.updateTextColor(colorName, colorValue);
         }
     }
 
-    private updateTextColor(colorName: string, backgroundColor: string): void {
-        // Calculate if we need white or black text
-        const textColor = this.getContrastColor(backgroundColor);
+    getCurrentColor(colorName: string): string {
+        if (isPlatformBrowser(this.platformId)) {
+            return getComputedStyle(document.documentElement)
+                .getPropertyValue(`--${colorName}-color`).trim() ||
+                this.defaultColors[colorName as keyof typeof this.defaultColors] || '';
+        }
+        return this.defaultColors[colorName as keyof typeof this.defaultColors] || '';
+    }
 
-        // Update corresponding text color variable
+    resetColors(): void {
+        if (isPlatformBrowser(this.platformId)) {
+            Object.entries(this.defaultColors).forEach(([name, value]) => {
+                document.documentElement.style.setProperty(`--${name}-color`, value);
+            });
+        }
+    }
+
+    private updateTextColor(colorName: string, backgroundColor: string): void {
+        if (!isPlatformBrowser(this.platformId)) return;
+
+        const textColor = this.getContrastColor(backgroundColor);
         const textColorMap: { [key: string]: string } = {
             'primary': 'primary-text',
             'secondary': 'secondary-text',
@@ -50,44 +64,11 @@ export class ThemeService {
     }
 
     private getContrastColor(hexColor: string): string {
-        // Remove # if present
         const color = hexColor.replace('#', '');
-
-        // Convert to RGB
         const r = parseInt(color.substr(0, 2), 16);
         const g = parseInt(color.substr(2, 2), 16);
         const b = parseInt(color.substr(4, 2), 16);
-
-        // Calculate relative luminance using WCAG formula
         const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-        // Return white for dark backgrounds, black for light backgrounds
         return luminance > 0.5 ? '#000000' : '#ffffff';
-    }
-
-    resetColors(): void {
-        if (isPlatformBrowser(this.platformId)) {
-            Object.entries(this.defaultColors).forEach(([name, value]) => {
-                document.documentElement.style.setProperty(`--${name}-color`, value);
-            });
-
-            // Reset text colors to defaults
-            document.documentElement.style.setProperty('--primary-text-color', '#ffffff');
-            document.documentElement.style.setProperty('--secondary-text-color', '#ffffff');
-            document.documentElement.style.setProperty('--accent-text-color', '#202427');
-            document.documentElement.style.setProperty('--alert-text-color', '#ffffff');
-        }
-    }
-
-    getCurrentColor(colorName: string): string {
-        if (isPlatformBrowser(this.platformId)) {
-            return getComputedStyle(document.documentElement)
-                .getPropertyValue(`--${colorName}-color`).trim();
-        }
-        return (this.defaultColors as any)[colorName] || '';
-    }
-
-    getDefaultColors() {
-        return this.defaultColors;
     }
 }

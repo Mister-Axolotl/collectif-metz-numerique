@@ -1,0 +1,207 @@
+@use "variables" as *;
+
+main {
+    // Layout de base
+    color: $text-color;
+    min-height: calc(100vh - $header-height);
+    margin: 20px auto;
+    padding: 20px;
+
+    // Container responsive
+    max-width: 1200px;
+    width: 100%;
+
+    // Accessibility
+    scroll-margin-top: 80px; // Pour le skip link
+
+    // Animation d'entrée
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+
+    // Typographie générique
+    line-height: 1.6;
+
+    // Titre principal
+    h1 {
+        margin-top: 80px;
+        margin-bottom: 40px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $primary-color;
+        text-align: center;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+    }
+
+    // Sous-titres
+    h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: $secondary-color;
+
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    h3 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: $text-color;
+
+        @media (max-width: 768px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    // Paragraphes
+    p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+
+        @media (max-width: 768px) {
+            font-size: 1rem;
+        }
+    }
+
+    // Listes
+    ul,
+    ol {
+        margin-bottom: 20px;
+        padding-left: 30px;
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+
+            @media (max-width: 768px) {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    // Liens
+    a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: $secondary-color;
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $primary-color;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+    }
+
+    // Responsive padding
+    @media (max-width: 1024px) {
+        padding: 20px 40px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px;
+        min-height: calc(100vh - 120px); // Header plus petit sur mobile
+    }
+
+    @media (max-width: 480px) {
+        padding: 15px;
+    }
+}
+
+// Animation d'entrée
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Classes utilitaires pour les pages spéciales
+main.no-animation {
+    animation: none;
+    opacity: 1;
+    transform: none;
+}
+
+main.full-width {
+    max-width: none;
+    padding: 20px 5%;
+}
+
+main.centered-content {
+    text-align: center;
+
+    h1,
+    h2,
+    h3 {
+        text-align: center;
+    }
+}
+
+main.narrow-content {
+    max-width: 800px;
+}
+
+// Variantes pour des pages spécifiques
+main.hero-page {
+    padding-top: 60px;
+
+    h1 {
+        margin-top: 0;
+        font-size: 3rem;
+
+        @media (max-width: 768px) {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+main.form-page {
+    max-width: 600px;
+
+    h1 {
+        margin-bottom: 60px;
+    }
+}
+
+main.grid-page {
+    max-width: 1400px;
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+}
+
+// Print styles
+@media print {
+    main {
+        background: white;
+        color: black;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: none;
+    }
+}

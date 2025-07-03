@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AccueilComponent } from './accueil-component/accueil-component';
-import { AProposComponent } from './apropos-component/apropos-component';
+import { AProposComponent } from './a-propos-component/a-propos-component';
 import { EvenementsComponent } from './evenements-component/evenements-component';
 import { AdhesionComponent } from './adhesion-component/adhesion-component';
 import { ProjetsComponent } from './projets-component/projets-component';

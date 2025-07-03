@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, Location, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,20 +17,28 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './page-non-trouvee-component.html',
   styleUrl: './page-non-trouvee-component.scss'
 })
-export class PageNonTrouveeComponent implements OnInit {
-  constructor(private location: Location) { }
+export class PageNonTrouveeComponent implements OnInit, OnDestroy {
+  constructor(
+    private location: Location,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   ngOnInit(): void {
-    // Optionnel : tracking de la page 404
-    this.trackPageNotFound();
+    // Vérifier si on est côté client avant d'accéder aux APIs du navigateur
+    if (isPlatformBrowser(this.platformId)) {
+      // Tracking de la page 404 seulement côté client
+      this.trackPageNotFound();
 
-    // Ajouter une classe au body pour le style de la page d'erreur
-    document.body.classList.add('error-page');
+      // Ajouter une classe au body pour le style de la page d'erreur
+      document.body.classList.add('error-page');
+    }
   }
 
   ngOnDestroy(): void {
-    // Nettoyer la classe au départ du component
-    document.body.classList.remove('error-page');
+    // Nettoyer la classe au départ du component seulement côté client
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('error-page');
+    }
   }
 
   /**
@@ -41,9 +49,14 @@ export class PageNonTrouveeComponent implements OnInit {
   }
 
   /**
-   * Tracking simple de la page 404
+   * Tracking simple de la page 404 - seulement côté client
    */
   private trackPageNotFound(): void {
+    // Vérifier une fois de plus qu'on est côté client
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     console.log('Page 404 visitée:', {
       url: window.location.href,
       timestamp: new Date().toISOString(),
@@ -70,7 +83,7 @@ export class PageNonTrouveeComponent implements OnInit {
 
       localStorage.setItem('404Errors', JSON.stringify(existing));
     } catch (error) {
-      console.warn('Impossible de sauvegarder les données 404:', error);
+      console.error('Erreur lors du tracking 404:', error);
     }
   }
 

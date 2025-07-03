@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header-component',
@@ -15,6 +15,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class HeaderComponent {
   isNavSticky = false;
   isMobileMenuOpen = false;
+
+  constructor(private router: Router) { }
 
   @HostListener('window:scroll')
   onWindowScroll() {
@@ -62,5 +64,22 @@ export class HeaderComponent {
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
     document.body.style.overflow = '';
+  }
+
+  // ✅ Version corrigée du skip link
+  skipToContent(event: Event) {
+    event.preventDefault();
+
+    // Focus direct sur le main content de la page actuelle
+    setTimeout(() => {
+      const main = document.getElementById('main-content');
+      if (main) {
+        main.setAttribute('tabindex', '-1');
+        (main as HTMLElement).focus();
+        // Scroll vers l'élément au cas où
+        main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => main.removeAttribute('tabindex'), 100);
+      }
+    }, 10);
   }
 }

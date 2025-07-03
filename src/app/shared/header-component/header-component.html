@@ -1,4 +1,8 @@
 <header role="banner">
+    <button type="button" class="skip-link" (click)="skipToContent($event)">
+        Aller au contenu principal
+    </button>
+
     <div class="container">
         <!-- Section principale avec logo, titre et contact -->
         <div class="header-top">
@@ -21,14 +25,13 @@
                 </a>
             </div>
             <!-- Burger menu button (mobile only) -->
-            <button class="burger-btn" type="button" (click)="toggleMobileMenu()" aria-label="Ouvrir le menu"
-                [attr.aria-expanded]="isMobileMenuOpen">
-                <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+            <button class="burger-btn" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </div>
-
-    <!-- Barre de navigation sticky -->
     <nav role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky"
         [class.mobile-open]="isMobileMenuOpen">
         <div class="nav-container">
@@ -44,8 +47,23 @@
                 <li><a routerLink="/partenaires" routerLinkActive="active" (click)="closeMobileMenu()">Partenaires</a>
                 </li>
             </ul>
+
+            <div class="nav-actions">
+                <a routerLink="/contact" routerLinkActive="active" class="contact-btn nav-action-btn"
+                    (click)="closeMobileMenu()">
+                    <mat-icon class="profile-icon">mail</mat-icon>
+                    <span>Contact</span>
+                </a>
+                <a routerLink="/profile" routerLinkActive="active" class="profile-btn nav-action-btn"
+                    (click)="closeMobileMenu()">
+                    <mat-icon class="profile-icon">account_circle</mat-icon>
+                    <span>Profil</span>
+                </a>
+            </div>
         </div>
-        <!-- Overlay pour fermer le menu en cliquant à côté -->
-        <div class="mobile-menu-overlay" *ngIf="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
     </nav>
 </header>
+
+@if (isMobileMenuOpen) {
+<div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+}

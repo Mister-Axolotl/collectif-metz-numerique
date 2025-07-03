@@ -3,6 +3,11 @@
 header {
     position: relative;
     background: linear-gradient(to right, rgba(5, 255, 142, 0.2), rgba(0, 157, 255, 0.2));
+    padding-bottom: 15px;
+
+    @media (max-width: 900px) {
+        padding-bottom: 0;
+    }
 
     &::before {
         content: "";
@@ -14,15 +19,19 @@ header {
         background-image: url("../../../../public/images/header-bg.jpg");
         background-size: cover;
         background-position: center;
-        opacity: 0.7;
+        opacity: 0.8;
         z-index: -1;
     }
 
     .container {
         max-width: 1200px;
+        padding: 0 1rem 0 1rem;
         margin: 0 auto;
-        padding: 0 1rem 1rem 1rem;
         position: relative;
+
+        @media (max-width: 900px) {
+            padding: 0 1rem 1rem 1rem;
+        }
     }
 
     .header-top {
@@ -30,6 +39,10 @@ header {
         justify-content: center;
         align-items: center;
         margin-bottom: 1rem;
+
+        @media (max-width: 900px) {
+            margin-bottom: 0;
+        }
     }
 
     .logo-title-section {
@@ -87,7 +100,7 @@ header {
 
             &.active {
                 background-color: transparent;
-                color: $primary-color;
+                color: $accent-color;
                 box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
             }
         }
@@ -132,7 +145,8 @@ header {
             }
 
             &.active {
-                background-color: $primary-color;
+                background-color: $secondary-color;
+                border: 2px solid $secondary-color;
                 color: $white;
             }
         }
@@ -141,26 +155,48 @@ header {
 
 // Navigation sticky
 .main-nav {
-    background-color: $tertiary-color;
+    background-color: $secondary-color;
     padding: 0.5rem 0;
+    margin: 15px auto 0 auto;
     position: relative;
-    z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1200;
+    width: calc(100% - 2rem);
+
+    @media screen and (max-width: 900px) {
+        margin: 0;
+        width: 100%;
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 900px) {
+        margin: 0 0 0 auto;
+        width: 50%;
+        min-width: 300px;
+    }
+
+    transition:
+        box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-radius 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        backdrop-filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 1200px;
 
     &.sticky {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
-        background-color: $tertiary-color;
+        z-index: 1200;
         opacity: 0.97;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border-radius: 0;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        animation: slideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        margin: 0;
+        max-width: none;
+        width: 100%;
     }
 }
 
@@ -176,9 +212,12 @@ ul {
     justify-content: center;
     gap: 2rem;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 li {
+    position: relative;
+
     a {
         color: $white;
         text-decoration: none;
@@ -186,17 +225,49 @@ li {
         border-radius: 4px;
         transition: all 0.3s ease;
         position: relative;
+        z-index: 1;
+        overflow: hidden;
 
-        &:hover,
-        &.active {
-            background-color: rgba(255, 255, 255, 0.2);
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 4px;
+            opacity: 0;
+            transform: scaleX(0.2);
+            transition:
+                opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
         }
 
-        // Effet de survol amélioré
         &:hover {
             transform: translateY(-2px);
         }
+
+        &.active::before,
+        &:hover::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
     }
+}
+
+.nav-slider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: $accent-color;
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    pointer-events: none;
 }
 
 // Animation keyframes
@@ -252,24 +323,59 @@ li {
     }
 }
 
-// Pour éviter le "saut" du contenu quand la nav devient sticky
 body.nav-sticky {
-    padding-top: 60px; // Ajuste selon la hauteur de ta nav
+    padding-top: 60px;
 }
 
 .burger-btn {
-    display: none;
-    background: none;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     border: none;
-    outline: none;
-    cursor: pointer;
-    margin-left: 1rem;
-    font-size: 2rem;
-    color: $primary-color;
-    z-index: 1201; // au-dessus du menu mobile
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1300;
+    display: none;
 
-    mat-icon {
-        font-size: 2.4rem;
+    span {
+        display: block;
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        height: 3px;
+        background: #111;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    span:nth-child(1) {
+        top: 16px;
+    }
+    span:nth-child(2) {
+        top: 22px;
+    }
+    span:nth-child(3) {
+        top: 28px;
+    }
+
+    &.open {
+        span:nth-child(1) {
+            top: 22px;
+            transform: rotate(45deg);
+        }
+        span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+        span:nth-child(3) {
+            top: 22px;
+            transform: rotate(-45deg);
+        }
     }
 }
 
@@ -277,9 +383,10 @@ body.nav-sticky {
 @media (max-width: 900px) {
     .burger-btn {
         display: block;
-        position: absolute;
+        position: fixed; // <-- sticky sur l'écran
         right: 1rem;
         top: 1.2rem;
+        z-index: 1300; // au-dessus du menu mobile
     }
 
     .main-nav {
@@ -288,7 +395,6 @@ body.nav-sticky {
         left: 0;
         right: 0;
         height: 100vh;
-        background: $tertiary-color;
         transform: translateY(-100%);
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
@@ -324,7 +430,7 @@ body.nav-sticky {
             &:hover,
             &.active {
                 background: rgba(255, 255, 255, 0.12);
-                color: $primary-color;
+                color: $accent-color;
             }
         }
 
@@ -364,8 +470,6 @@ body.nav-sticky {
 @media (max-width: 900px) {
     .main-nav.sticky {
         position: fixed !important;
-        // MAIS le menu mobile prend le dessus avec .mobile-open
-        // Optionnel : tu peux aussi forcer position: static si tu veux
         position: static !important;
         animation: none !important;
         box-shadow: none !important;
@@ -379,5 +483,86 @@ body.nav-sticky {
 
     to {
         opacity: 1;
+    }
+}
+
+// Style pour le bouton skip link
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color, #5e9d81);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    transition: top 0.3s ease;
+    cursor: pointer;
+
+    &:focus {
+        top: 6px;
+        outline: 2px solid var(--accent-color, #a8dadc);
+        outline-offset: 2px;
+    }
+}
+
+// Par défaut, cacher les actions nav mobile
+.nav-actions {
+    display: none;
+}
+
+// Responsive mobile : déplacer les boutons dans la nav
+@media (max-width: 900px) {
+    .header-actions {
+        display: none !important;
+    }
+    .nav-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .nav-action-btn {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: left;
+        gap: 5px;
+        width: 80vw;
+        max-width: 320px;
+        justify-content: center;
+        font-size: 1.1rem;
+        padding: 1rem 0;
+        border-radius: 30px;
+        background: $white;
+        color: $primary-color;
+        border: 2px solid $primary-color;
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 auto;
+        transition:
+            background 0.2s,
+            color 0.2s,
+            box-shadow 0.2s;
+
+        .profile-icon {
+            color: $primary-color;
+        }
+
+        &:hover,
+        &.active {
+            background: $primary-color;
+            color: $white;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+            .profile-icon {
+                color: $white;
+            }
+        }
     }
 }

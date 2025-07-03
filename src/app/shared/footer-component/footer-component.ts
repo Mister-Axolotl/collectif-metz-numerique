@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -8,15 +8,22 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-footer-component',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, MatIconModule, MatTooltipModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    MatIconModule,
+    MatTooltipModule,
+  ],
   templateUrl: './footer-component.html',
   styleUrl: './footer-component.scss'
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   currentYear = new Date().getFullYear();
   newsletterEmail = '';
   isNewsletterSubmitting = false;
   newsletterMessage = '';
+  isFooterVisible = false;
 
   // Liens des réseaux sociaux
   socialLinks = {
@@ -29,56 +36,65 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.initializeFooter();
-  }
-
-  /**
-   * Initialise les fonctionnalités du footer
-   */
-  private initializeFooter(): void {
-    console.log('Footer initialized');
-  }
-
-  /**
-   * Gestion de la soumission de la newsletter
-   */
-  onNewsletterSubmit(): void {
-    if (!this.isValidEmail(this.newsletterEmail)) {
-      this.showNewsletterMessage('Veuillez saisir une adresse email valide.', 'error');
-      return;
+  onFooterInViewport(visible: boolean) {
+    if (visible && !this.isFooterVisible) {
+      this.isFooterVisible = true;
+      // Plus besoin d'appeler animateFooterElements()
     }
-
-    this.isNewsletterSubmitting = true;
-    this.newsletterMessage = '';
-
-    this.subscribeToNewsletter(this.newsletterEmail)
-      .then(() => {
-        this.showNewsletterMessage('Merci ! Votre inscription a été prise en compte.', 'success');
-        this.newsletterEmail = '';
-      })
-      .catch((error) => {
-        console.error('Erreur lors de l\'inscription à la newsletter:', error);
-        this.showNewsletterMessage('Erreur lors de l\'inscription. Veuillez réessayer.', 'error');
-      })
-      .finally(() => {
-        this.isNewsletterSubmitting = false;
-      });
   }
 
   /**
-   * Simule l'inscription à la newsletter
+   * Anime les éléments du footer quand il devient visible
    */
-  private subscribeToNewsletter(email: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.1) {
-          resolve();
-        } else {
-          reject(new Error('Erreur simulée'));
-        }
-      }, 1500);
-    });
+  private animateFooterElements(): void {
+    // Animation du footer principal
+    this.animateElement('footer', 'animate-slide-in-up', 100);
+
+    // Animation des sections avec stagger
+    this.animateElements('.footer-section', 'animate-slide-in-up-scale', 200, 120);
+
+    // Animation des liens sociaux
+    this.animateElements('.social-link', 'animate-bounce-in', 400, 50);
+
+    // Animation du bouton d'adhésion
+    this.animateElement('.adhesion-btn', 'animate-slide-in-right', 800);
+
+    // Animation du copyright
+    this.animateElement('.copyright', 'animate-slide-in-left', 600);
+
+    // Animation des liens légaux
+    this.animateElement('.legal-links', 'animate-flip-in', 700);
+
+    // Animation des badges
+    this.animateElements('.footer-badges .badge', 'animate-scale-rotate-in', 900, 100);
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof document !== 'undefined';
+  }
+
+  private animateElement(selector: string, animationClass: string, delay: number): void {
+    if (!this.isBrowser()) return;
+    setTimeout(() => {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.classList.add(animationClass);
+        element.classList.remove('animate-hidden');
+      }
+    }, delay);
+  }
+
+  private animateElements(selector: string, animationClass: string, initialDelay: number, staggerDelay: number): void {
+    if (!this.isBrowser()) return;
+    setTimeout(() => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add(animationClass);
+          element.classList.remove('animate-hidden');
+        }, index * staggerDelay);
+      });
+    }, initialDelay);
   }
 
   /**

@@ -562,11 +562,11 @@ footer {
 
     .adhesion-benefits {
         display: flex;
-        align-items: center;
         gap: 0.5rem;
         margin-bottom: 0.5rem;
         font-size: 0.9rem;
-        color: $white;
+        color: $primary-color;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
 
         mat-icon {
             color: #4caf50;
