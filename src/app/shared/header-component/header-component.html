@@ -32,8 +32,9 @@
             </button>
         </div>
     </div>
-    <nav role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky"
-        [class.mobile-open]="isMobileMenuOpen">
+
+    <nav #mobileMenu role="navigation" aria-label="Navigation principale" class="main-nav" [class.sticky]="isNavSticky"
+        [class.mobile-open]="isMobileMenuOpen" tabindex="-1">
         <div class="nav-container">
             <ul>
                 <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
@@ -41,11 +42,11 @@
                 <li><a routerLink="/a-propos" routerLinkActive="active" (click)="closeMobileMenu()">À propos</a></li>
                 <li><a routerLink="/evenements" routerLinkActive="active" (click)="closeMobileMenu()">Événements</a>
                 </li>
-                <li><a routerLink="/adhesion" routerLinkActive="active" (click)="closeMobileMenu()">Adhésion</a></li>
                 <li><a routerLink="/actualites" routerLinkActive="active" (click)="closeMobileMenu()">Actualités</a>
                 </li>
                 <li><a routerLink="/partenaires" routerLinkActive="active" (click)="closeMobileMenu()">Partenaires</a>
                 </li>
+                <li><a routerLink="/adhesion" routerLinkActive="active" (click)="closeMobileMenu()">Adhésion</a></li>
             </ul>
 
             <div class="nav-actions">
