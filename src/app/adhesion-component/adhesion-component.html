@@ -1,3 +1,105 @@
-<main id="main-content">
-    <h1>Adhésion</h1>
+<main class="adhesion-main">
+    <div class="container">
+        <h1>Adhésion Collectif Metz Numérique</h1>
+        <p class="cotisation">Cotisation annuelle : <strong>15,00 €</strong></p>
+
+        <form [formGroup]="adhesionForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Informations personnelles -->
+            <section class="form-section">
+                <h2>📋 Informations personnelles</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Prénom <span class="required">*</span></label>
+                        <input type="text" id="firstName" formControlName="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Nom <span class="required">*</span></label>
+                        <input type="text" id="lastName" formControlName="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" formControlName="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" formControlName="phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Date de naissance <span class="required">*</span></label>
+                    <input type="date" id="birthDate" formControlName="birthDate" [max]="maxBirthDate" required>
+                    <div class="legal-text">Vous devez avoir au moins 16 ans pour adhérer</div>
+                </div>
+            </section>
+
+            <!-- Adresse -->
+            <section class="form-section">
+                <h2>🏠 Adresse de résidence</h2>
+                <div class="form-group">
+                    <label for="street">Adresse <span class="required">*</span></label>
+                    <input type="text" id="street" formControlName="street" required placeholder="Numéro et nom de rue">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">Code postal <span class="required">*</span></label>
+                        <input type="text" id="postalCode" formControlName="postalCode" pattern="[0-9]{5}" required
+                            (blur)="onPostalCodeBlur()">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Ville <span class="required">*</span></label>
+                        <input type="text" id="city" formControlName="city" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Pays</label>
+                    <input type="text" id="country" formControlName="country" readonly>
+                </div>
+            </section>
+
+            <!-- Consentements RGPD -->
+            <section class="form-section">
+                <h2>🔒 Protection des données personnelles</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consentData" formControlName="consentData" required>
+                    <label for="consentData">
+                        J'accepte le traitement de mes données personnelles <span class="required">*</span>
+                    </label>
+                    <div class="legal-text">
+                        Conformément au RGPD, vos données personnelles sont collectées pour la gestion de votre
+                        adhésion,
+                        la communication des activités de l'association et le respect des obligations légales.
+                        Vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos
+                        données.
+                        Contact : <strong>contact&#64;collectif-metz-numerique.fr</strong>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consentAge" formControlName="consentAge" required>
+                    <label for="consentAge">
+                        Je certifie avoir au moins 16 ans <span class="required">*</span>
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consentTerms" formControlName="consentTerms" required>
+                    <label for="consentTerms">
+                        J'accepte les conditions générales d'adhésion <span class="required">*</span>
+                    </label>
+                    <div class="legal-text">
+                        <strong>Conditions générales :</strong><br>
+                        • L'adhésion est valable 1 an à compter du paiement<br>
+                        • La cotisation de 15€ n'est pas remboursable sauf cas exceptionnel<br>
+                        • L'adhérent s'engage à respecter les valeurs et règles de l'association<br>
+                        • L'association se réserve le droit d'exclure un membre en cas de comportement inapproprié<br>
+                        • Les données sont conservées pendant la durée de l'adhésion + 3 ans (obligations comptables)
+                    </div>
+                </div>
+            </section>
+
+            <button type="submit" [disabled]="payBtnLoading || adhesionForm.invalid || !checkAgeValid()">
+                {{ payBtnText }}
+            </button>
+        </form>
+    </div>
 </main>

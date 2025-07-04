@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="header">
+        <div class="success-icon">🎉</div>
+        <h1>Bienvenue dans notre collectif !</h1>
+        <p>Votre adhésion a été confirmée avec succès</p>
+    </div>
+
+    <div class="content">
+        <div class="member-card">
+            <h3>👤 Informations du membre</h3>
+            <div>
+                <p><strong>Nom : </strong> <span>{{ memberName }}</span></p>
+                <p><strong>Email : </strong> <span>{{ memberEmail }}</span></p>
+                <p><strong>Numéro de membre : </strong> <span>{{ memberNumber }}</span></p>
+                <p><strong>Statut : </strong> <span style="color: #28a745; font-weight: bold;">✅ ACTIF</span></p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">💰 Cotisation</div>
+                <div class="info-value">15,00 €</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">📅 Valable jusqu'au</div>
+                <div class="info-value">{{ membershipEnd }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🔗 Session ID</div>
+                <div class="info-value">{{ sessionId }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">📧 Reçu par email</div>
+                <div class="info-value">Sous quelques minutes</div>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h4>📋 Prochaines étapes</h4>
+            <ul>
+                <li>Vous recevrez un email de confirmation</li>
+                <li>Votre carte de membre virtuelle sera disponible sous peu</li>
+                <li>Vous serez informé(e) de nos prochains événements</li>
+                <li>Accès au Discord/Slack de la communauté</li>
+            </ul>
+        </div>
+
+        <div class="centered">
+            <button type="button" (click)="goToAdhesion()">
+                ➕ Parrainer un nouveau membre
+            </button>
+            <p class="hint">
+                💡 Conservez cette page ou prenez une capture d'écran pour vos dossiers
+            </p>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { ContactComponent } from './contact-component/contact-component';
 import { TestComponent } from './test-component/test-component';
 import { InformationsLegalesComponent } from './informations-legales-component/informations-legales-component';
 import { PageNonTrouveeComponent } from './page-non-trouvee-component/page-non-trouvee-component';
+import { AdhesionSuccessComponent } from './adhesion-success-component/adhesion-success-component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,10 @@ export const routes: Routes = [
     {
         path: 'adhesion',
         component: AdhesionComponent
+    },
+    {
+        path: 'adhesion/success',
+        component: AdhesionSuccessComponent
     },
     {
         path: 'projets',
