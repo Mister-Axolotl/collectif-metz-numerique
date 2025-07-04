@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header-component',

@@ -11,7 +11,7 @@
                     <div class="logo">
                         <img src="images/logo_high.png" alt="Logo Collectif Metz Numérique" class="site-logo">
                     </div>
-                    <h1>Collectif Metz Numérique</h1>
+                    <span id="title">Collectif Metz Numérique</span>
                 </a>
             </div>
             <div class="header-actions">
@@ -25,7 +25,8 @@
                 </a>
             </div>
             <!-- Burger menu button (mobile only) -->
-            <button class="burger-btn" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+            <button class="burger-btn" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()"
+                aria-label="Ouvrir le menu de navigation">
                 <span></span>
                 <span></span>
                 <span></span>
